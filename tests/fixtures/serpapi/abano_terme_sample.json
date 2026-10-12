@@ -1,0 +1,93 @@
+{
+  "search_metadata": {
+    "id": "mock_serpapi_search_001",
+    "status": "Success",
+    "json_endpoint": "https://serpapi.com/searches/mock_serpapi_search_001.json",
+    "created_at": "2026-10-12 19:30:00 UTC",
+    "processed_at": "2026-10-12 19:30:04 UTC",
+    "google_hotels_url": "https://www.google.com/travel/hotels/Abano+Terme",
+    "raw_html_file": "https://serpapi.com/searches/mock_serpapi_search_001.html",
+    "total_time_taken": 4.12
+  },
+  "search_parameters": {
+    "engine": "google_hotels",
+    "q": "Abano Terme hotels",
+    "check_in_date": "2026-11-06",
+    "check_out_date": "2026-11-08",
+    "adults": 2,
+    "children": 2,
+    "children_ages": "15,7",
+    "gl": "it",
+    "hl": "it",
+    "currency": "EUR"
+  },
+  "properties": [
+    {
+      "type": "hotel",
+      "name": "Hotel Terme Bologna",
+      "description": "Family-friendly thermal hotel set in a large park with connected indoor and outdoor thermal pools.",
+      "link": "https://www.google.com/travel/hotels/entity/ChIJ_mock_bologna",
+      "gps_coordinates": {
+        "latitude": 45.3582,
+        "longitude": 11.7912
+      },
+      "hotel_class": "3-star hotel",
+      "overall_rating": 4.4,
+      "reviews": 840,
+      "rate_per_night": {
+        "lowest": "€160",
+        "extracted_lowest": 160,
+        "before_taxes_fees": "€145",
+        "extracted_before_taxes_fees": 145
+      },
+      "total_rate": {
+        "lowest": "€320",
+        "extracted_lowest": 320,
+        "before_taxes_fees": "€290",
+        "extracted_before_taxes_fees": 290
+      },
+      "deal_type": "LESS_THAN_USUAL",
+      "deal_description": "15% less than usual",
+      "amenities": [
+        "Spa",
+        "Indoor pool",
+        "Outdoor pool",
+        "Free breakfast",
+        "Free Wi-Fi",
+        "Free parking"
+      ]
+    },
+    {
+      "type": "hotel",
+      "name": "Grand Hotel Terme Trieste & Victoria",
+      "description": "Luxury 5-star spa hotel with comprehensive thermal treatments and wellness park.",
+      "link": "https://www.google.com/travel/hotels/entity/ChIJ_mock_trieste",
+      "gps_coordinates": {
+        "latitude": 45.3610,
+        "longitude": 11.7895
+      },
+      "hotel_class": "5-star hotel",
+      "overall_rating": 4.7,
+      "reviews": 1120,
+      "rate_per_night": {
+        "lowest": "€380",
+        "extracted_lowest": 380,
+        "before_taxes_fees": "€350",
+        "extracted_before_taxes_fees": 350
+      },
+      "total_rate": {
+        "lowest": "€760",
+        "extracted_lowest": 760,
+        "before_taxes_fees": "€700",
+        "extracted_before_taxes_fees": 700
+      },
+      "amenities": [
+        "Spa",
+        "Indoor pool",
+        "Outdoor pool",
+        "Free breakfast",
+        "Air conditioning"
+      ]
+    }
+  ]
+}

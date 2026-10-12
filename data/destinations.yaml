@@ -1,0 +1,2845 @@
+# ==============================================================================
+# Reachable Destinations Catalogue from Santa Margherita Ligure–Portofino
+# ==============================================================================
+# Origin: Santa Margherita Ligure–Portofino (GE), Liguria, Italy
+# Station Code: SML / S. Margherita Ligure-Portofino (Genova–La Spezia line)
+# Coordinates: Lat 44.3312, Lon 9.2138
+# Mode: Train and/or scheduled bus ONLY (no car, no flights)
+# Max Door-to-Door Travel Window: <= 7.0 hours (default ceiling), soft limit 8.0 hours
+# Coverage: Liguria, Piemonte, Lombardia, Valle d'Aosta, Trentino-Alto Adige,
+#           Veneto, Emilia-Romagna, Toscana, Umbria, Lazio
+# ==============================================================================
+
+origin:
+  station_name: "Santa Margherita Ligure-Portofino"
+  region: "Liguria"
+  coordinates:
+    latitude: 44.3312
+    longitude: 9.2138
+  main_rail_corridor: "Tirrenica Settentrionale (Genova - Pisa)"
+
+destinations:
+  # ============================================================================
+  # LIGURIA - TERME & SPA
+  # ============================================================================
+  - id: "terme-di-genova"
+    name: "Terme di Genova (Acquasanta)"
+    region: "Liguria"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Genova Acquasanta"
+    latitude: 44.4533
+    longitude: 8.7758
+    fastest_travel_time_hours: 1.3
+    typical_travel_time_hours: 1.6
+    changes: 1
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Regionale"
+    transfer_hubs:
+      - "Genova Brignole"
+    last_mile_bus_required: false
+    last_mile_bus_notes: "Walking distance (~600m) from Genova Acquasanta station to the thermal spa baths, or AMT local shuttle bus 101."
+    minimum_child_age_spa: 5
+    friday_departure_notes: "Frequent regional trains from SML to Genova Brignole, then take Regionale line towards Acqui Terme. Hourly service Friday afternoon/evening."
+    sunday_return_notes: "Regular regional returns via Genova Brignole. Last convenient train leaves Acquasanta around 20:15 on Sundays."
+    source_citation: "Trenitalia Regional Liguria Timetable (Genova - Acqui Terme via Ovada line)"
+    notes: "Historic sulfureous thermal bath located in the inland hills behind Voltri. Very quick escape from SML with 1 transfer at Genova Brignole. Family admission allowed during dedicated daytime hours."
+
+  # ============================================================================
+  # LIGURIA - SEASIDE & COASTAL
+  # ============================================================================
+  - id: "monterosso-al-mare"
+    name: "Monterosso al Mare (Cinque Terre)"
+    region: "Liguria"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "sea"
+    category: "seaside"
+    primary_station: "Monterosso"
+    latitude: 44.1461
+    longitude: 9.6548
+    fastest_travel_time_hours: 0.4
+    typical_travel_time_hours: 0.6
+    changes: 0
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Regionale"
+      - "Trenitalia Intercity"
+    transfer_hubs: []
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct Regionale and Intercity trains every 30-45 minutes from SML. Travel time 25-35 minutes."
+    sunday_return_notes: "Direct trains every 30-45 minutes throughout Sunday evening until late."
+    source_citation: "Trenitalia Liguria Timetable (Genova - La Spezia line)"
+    notes: "Largest of the Cinque Terre towns with proper sandy beach and extensive family accommodation. Direct train right to the beachfront."
+
+  - id: "vernazza"
+    name: "Vernazza (Cinque Terre)"
+    region: "Liguria"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "sea"
+    category: "seaside"
+    primary_station: "Vernazza"
+    latitude: 44.1352
+    longitude: 9.6838
+    fastest_travel_time_hours: 0.5
+    typical_travel_time_hours: 0.7
+    changes: 0
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Regionale"
+    transfer_hubs: []
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct Regionale trains stop hourly or half-hourly during Cinque Terre Express seasonal operations."
+    sunday_return_notes: "Frequent direct return trains to SML throughout Sunday evening."
+    source_citation: "Trenitalia Liguria Regional Timetable"
+    notes: "Iconic cliffside village. Station is in the center, short walk to harbor."
+
+  - id: "manarola"
+    name: "Manarola (Cinque Terre)"
+    region: "Liguria"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "sea"
+    category: "seaside"
+    primary_station: "Manarola"
+    latitude: 44.1069
+    longitude: 9.7288
+    fastest_travel_time_hours: 0.6
+    typical_travel_time_hours: 0.8
+    changes: 0
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Regionale"
+    transfer_hubs: []
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct Regionale trains take ~35 minutes."
+    sunday_return_notes: "Direct trains back towards Genova stop at Manarola every 30-60 min."
+    source_citation: "Trenitalia Liguria Regional Timetable"
+    notes: "Pedestrianized village connected via tunnel from station."
+
+  - id: "riomaggiore"
+    name: "Riomaggiore (Cinque Terre)"
+    region: "Liguria"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "sea"
+    category: "seaside"
+    primary_station: "Riomaggiore"
+    latitude: 44.0988
+    longitude: 9.7381
+    fastest_travel_time_hours: 0.6
+    typical_travel_time_hours: 0.8
+    changes: 0
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Regionale"
+    transfer_hubs: []
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct Regionale train takes ~38 minutes."
+    sunday_return_notes: "Direct trains back towards SML run regularly."
+    source_citation: "Trenitalia Liguria Regional Timetable"
+    notes: "Easternmost Cinque Terre village. Direct train connection."
+
+  - id: "levanto"
+    name: "Levanto"
+    region: "Liguria"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "sea"
+    category: "seaside"
+    primary_station: "Levanto"
+    latitude: 44.1714
+    longitude: 9.6133
+    fastest_travel_time_hours: 0.3
+    typical_travel_time_hours: 0.4
+    changes: 0
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Regionale"
+      - "Trenitalia Intercity"
+    transfer_hubs: []
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct trains run every 20-30 min; journey takes ~20 min."
+    sunday_return_notes: "Direct trains back to SML every 20-30 min."
+    source_citation: "Trenitalia Timetable"
+    notes: "Broad sandy bay, gateway to Cinque Terre with cycle path to Bonassola and Framura."
+
+  - id: "sestri-levante"
+    name: "Sestri Levante"
+    region: "Liguria"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "sea"
+    category: "seaside"
+    primary_station: "Sestri Levante"
+    latitude: 44.2736
+    longitude: 9.3989
+    fastest_travel_time_hours: 0.25
+    typical_travel_time_hours: 0.3
+    changes: 0
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Regionale"
+      - "Trenitalia Intercity"
+    transfer_hubs: []
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct trains run 3-4 times per hour; journey is ~15 min."
+    sunday_return_notes: "Frequent trains all evening."
+    source_citation: "Trenitalia Timetable"
+    notes: "Baia del Silenzio and Baia delle Favole. Perfect quick family beach getaway."
+
+  - id: "camogli"
+    name: "Camogli"
+    region: "Liguria"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "sea"
+    category: "seaside"
+    primary_station: "Camogli-San Fruttuoso"
+    latitude: 44.3486
+    longitude: 9.1558
+    fastest_travel_time_hours: 0.15
+    typical_travel_time_hours: 0.2
+    changes: 0
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Regionale"
+    transfer_hubs: []
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct Regionale train takes ~8-10 minutes. Trains run 2-3 times per hour."
+    sunday_return_notes: "Direct trains every 20-30 minutes."
+    source_citation: "Trenitalia Regional Timetable"
+    notes: "Picturesque fishing village directly adjacent to Portofino promontory. Walking distance to harbor and beach."
+
+  - id: "portofino"
+    name: "Portofino"
+    region: "Liguria"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "sea"
+    category: "seaside"
+    primary_station: "Santa Margherita Ligure-Portofino"
+    latitude: 44.3039
+    longitude: 9.2097
+    fastest_travel_time_hours: 0.3
+    typical_travel_time_hours: 0.4
+    changes: 1
+    transit_mode: "bus"
+    transit_operators:
+      - "AMT Genova (Line 782)"
+    transfer_hubs:
+      - "Santa Margherita Ligure FS"
+    last_mile_bus_required: true
+    last_mile_bus_notes: "Direct AMT bus 782 departs directly outside SML railway station every 15-20 minutes, taking 15 minutes to Portofino piazza. Alternatively passenger ferry from SML pier."
+    minimum_child_age_spa: null
+    friday_departure_notes: "AMT Line 782 operates until approx 23:00 on Friday."
+    sunday_return_notes: "Line 782 operates every 20 minutes back to SML station on Sunday."
+    source_citation: "AMT Genova Line 782 timetable"
+    notes: "Famous luxury harbor village right at the doorstep of the home station."
+
+  - id: "portovenere"
+    name: "Portovenere"
+    region: "Liguria"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "sea"
+    category: "seaside"
+    primary_station: "La Spezia Centrale"
+    latitude: 44.0514
+    longitude: 9.8356
+    fastest_travel_time_hours: 1.4
+    typical_travel_time_hours: 1.7
+    changes: 1
+    transit_mode: "train+bus"
+    transit_operators:
+      - "Trenitalia Intercity / Regionale"
+      - "ATC Esercizio La Spezia (Line 11/P)"
+    transfer_hubs:
+      - "La Spezia Centrale"
+    last_mile_bus_required: true
+    last_mile_bus_notes: "ATC Line 11 or Line P departs from Via Fiume (just outside La Spezia Centrale) every 15-30 minutes to Portovenere (journey takes ~30 min)."
+    minimum_child_age_spa: null
+    friday_departure_notes: "Frequent 40-minute direct trains SML to La Spezia Centrale, then quick transfer to bus 11/P."
+    sunday_return_notes: "ATC bus runs regularly Sunday afternoon/evening connecting to northbound trains back to SML."
+    source_citation: "ATC Esercizio timetable + Trenitalia timetable"
+    notes: "UNESCO world heritage village at the tip of the Golfo dei Poeti, facing Palmaria island. Church of San Pietro and Byron's Cave."
+
+  - id: "finale-ligure"
+    name: "Finale Ligure"
+    region: "Liguria"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "sea"
+    category: "seaside"
+    primary_station: "Finale Ligure Marina"
+    latitude: 44.1689
+    longitude: 8.3444
+    fastest_travel_time_hours: 1.6
+    typical_travel_time_hours: 1.9
+    changes: 0
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Regionale"
+    transfer_hubs:
+      - "Genova Piazza Principe"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct Intercity trains (e.g., Ventimiglia-bound) run without changes in ~1h 35m; or 1 easy change at Genova Piazza Principe."
+    sunday_return_notes: "Multiple direct and 1-change options returning on Sunday evening."
+    source_citation: "Trenitalia Timetable"
+    notes: "Riviera di Ponente hub: wide sandy beaches, Medieval Finalborgo walled town, premier mountain biking and hiking trails."
+
+  - id: "alassio"
+    name: "Alassio"
+    region: "Liguria"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "sea"
+    category: "seaside"
+    primary_station: "Alassio"
+    latitude: 44.0044
+    longitude: 8.1697
+    fastest_travel_time_hours: 2.1
+    typical_travel_time_hours: 2.4
+    changes: 0
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Regionale Veloce"
+    transfer_hubs:
+      - "Genova Piazza Principe"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct Intercity trains run in ~2h 05m; or 1 change at Genova Piazza Principe with Regionale Veloce."
+    sunday_return_notes: "Direct evening Intercity trains or frequent 1-change connections back to SML."
+    source_citation: "Trenitalia Timetable"
+    notes: "Famous fine sand beaches, Muretto di Alassio, gentle shallow water entry ideal for 7yo child."
+
+  - id: "sanremo"
+    name: "Sanremo"
+    region: "Liguria"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "sea"
+    category: "seaside"
+    primary_station: "Sanremo"
+    latitude: 43.8158
+    longitude: 7.7761
+    fastest_travel_time_hours: 2.6
+    typical_travel_time_hours: 2.9
+    changes: 0
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Regionale Veloce"
+    transfer_hubs:
+      - "Genova Piazza Principe"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct Intercity trains from SML take ~2h 35m. Alternatively 1 change at Genova Piazza Principe."
+    sunday_return_notes: "Direct Intercity runs on Sunday afternoon/evening back towards SML and La Spezia."
+    source_citation: "Trenitalia Timetable"
+    notes: "City of flowers and music festival. 24km coastal cycling trail (Pista Ciclabile del Ponente Ligure), Belle Époque villas and casino."
+
+  - id: "bordighera"
+    name: "Bordighera"
+    region: "Liguria"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "sea"
+    category: "seaside"
+    primary_station: "Bordighera"
+    latitude: 43.7806
+    longitude: 7.6644
+    fastest_travel_time_hours: 2.8
+    typical_travel_time_hours: 3.1
+    changes: 0
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Regionale Veloce"
+    transfer_hubs:
+      - "Genova Piazza Principe"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct Intercity or 1 change at Genova Piazza Principe."
+    sunday_return_notes: "Direct Intercity Sunday late afternoon / evening."
+    source_citation: "Trenitalia Timetable"
+    notes: "Historic palm coast, Monet landscape painting spots, peaceful seaside escape close to French border."
+
+  # ============================================================================
+  # LIGURIA - ART CITY
+  # ============================================================================
+  - id: "genova"
+    name: "Genova"
+    region: "Liguria"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "city"
+    category: "art_city"
+    primary_station: "Genova Brignole"
+    latitude: 44.4056
+    longitude: 8.9463
+    fastest_travel_time_hours: 0.5
+    typical_travel_time_hours: 0.6
+    changes: 0
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Regionale"
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciabianca"
+    transfer_hubs: []
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Trains depart every 15-20 minutes. SML to Brignole is 25-30 min; to Piazza Principe is 35-40 min."
+    sunday_return_notes: "Trains run until midnight back to SML."
+    source_citation: "Trenitalia Timetable"
+    notes: "UNESCO Palazzi dei Rolli, Porto Antico, Acquario di Genova (huge hit for 7yo), and largest medieval historic center in Europe."
+
+  # ============================================================================
+  # PIEMONTE - TERME & SPA
+  # ============================================================================
+  - id: "acqui-terme"
+    name: "Acqui Terme"
+    region: "Piemonte"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Acqui Terme"
+    latitude: 44.6756
+    longitude: 8.4711
+    fastest_travel_time_hours: 2.1
+    typical_travel_time_hours: 2.3
+    changes: 1
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Regionale"
+    transfer_hubs:
+      - "Genova Brignole"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: 5
+    friday_departure_notes: "Take train from SML to Genova Brignole (~30 min), then direct Regionale Genova-Acqui Terme via Ovada (~1h 15m). Operates every 1-2 hours."
+    sunday_return_notes: "Regular regional trains depart Acqui Terme to Genova Brignole with seamless connection back to SML."
+    source_citation: "Trenitalia Timetable (Genova - Ovada - Acqui Terme line)"
+    notes: "Historic Roman thermal bath town famous for 'La Bollente' 74.5°C bubbling spring fountain in the town center, and Lago delle Sorgenti spa resort. Just over 2h from SML with 1 simple transfer."
+
+  - id: "terme-di-vinadio"
+    name: "Vinadio Terme (Terme di Vinadio)"
+    region: "Piemonte"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Cuneo"
+    latitude: 44.3072
+    longitude: 7.1728
+    fastest_travel_time_hours: 5.5
+    typical_travel_time_hours: 6.2
+    changes: 3
+    transit_mode: "train+bus"
+    transit_operators:
+      - "Trenitalia Regionale"
+      - "Grandabus / STP Cuneo (Line 93)"
+    transfer_hubs:
+      - "Genova Piazza Principe"
+      - "Fossano"
+      - "Cuneo"
+    last_mile_bus_required: true
+    last_mile_bus_notes: "Grandabus line 93 connects Cuneo station to Vinadio / Bagni di Vinadio (~55 min). Note: bus frequency is limited to 2-3 runs on Sundays; plan connection ahead."
+    minimum_child_age_spa: 4
+    friday_departure_notes: "Train SML to Genova PP (~40m), Regionale to Fossano/Cuneo (~2h), then afternoon bus up Valle Stura."
+    sunday_return_notes: "Sunday bus departing Vinadio early afternoon connects to Cuneo-Torino/Genova trains."
+    source_citation: "Grandabus Cuneo line 93 + Trenitalia regional timetable"
+    notes: "High mountain thermal sulfur springs in the Maritime Alps with Roman origins and historic Fort of Vinadio."
+
+  # ============================================================================
+  # PIEMONTE - ART CITIES & COUNTRYSIDE
+  # ============================================================================
+  - id: "torino"
+    name: "Torino"
+    region: "Piemonte"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "city"
+    category: "art_city"
+    primary_station: "Torino Porta Nuova"
+    latitude: 45.0703
+    longitude: 7.6869
+    fastest_travel_time_hours: 2.7
+    typical_travel_time_hours: 3.1
+    changes: 1
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Regionale Veloce"
+      - "Trenitalia Intercity"
+    transfer_hubs:
+      - "Genova Piazza Principe"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Train SML to Genova Piazza Principe (~35m), then hourly direct Regionale Veloce or Intercity Genova-Torino (~1h 50m). Highly reliable."
+    sunday_return_notes: "Hourly return trains from Torino Porta Nuova to Genova Piazza Principe with instant SML connection until 21:30."
+    source_citation: "Trenitalia Timetable"
+    notes: "Piedmont capital: Egyptian Museum (world-class for kids), National Cinema Museum (Mole Antonelliana), Royal Palace, historic cafes, and QC Termetorino (urban day spa)."
+
+  - id: "alba"
+    name: "Alba (Langhe)"
+    region: "Piemonte"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "countryside"
+    category: "countryside"
+    primary_station: "Alba"
+    latitude: 44.6989
+    longitude: 8.0347
+    fastest_travel_time_hours: 3.1
+    typical_travel_time_hours: 3.6
+    changes: 2
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Regionale"
+      - "Trenitalia Regionale Veloce"
+    transfer_hubs:
+      - "Genova Piazza Principe"
+      - "Asti"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Train SML to Genova PP (~35m), train to Asti (~1h 10m), regional train Asti-Alba (reopened line, ~35m)."
+    sunday_return_notes: "Hourly connection Alba-Asti-Genova-SML."
+    source_citation: "Trenitalia SFM & Piedmont Regional Timetable"
+    notes: "Heart of the UNESCO Langhe wine region and white truffle capital. Gorgeous rolling hills, hazelnut orchards, gourmet food."
+
+  - id: "asti"
+    name: "Asti"
+    region: "Piemonte"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "city"
+    category: "art_city"
+    primary_station: "Asti"
+    latitude: 44.9008
+    longitude: 8.2069
+    fastest_travel_time_hours: 2.2
+    typical_travel_time_hours: 2.6
+    changes: 1
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Regionale Veloce"
+      - "Trenitalia Intercity"
+    transfer_hubs:
+      - "Genova Piazza Principe"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Train SML to Genova PP (~35m), then Regionale Veloce to Asti (~1h 10m)."
+    sunday_return_notes: "Frequent hourly trains from Asti to Genova connecting back to SML."
+    source_citation: "Trenitalia Timetable"
+    notes: "Monferrato wine country, medieval towers, Palio di Asti heritage."
+
+  # ============================================================================
+  # PIEMONTE - LAKES & MOUNTAINS
+  # ============================================================================
+  - id: "stresa"
+    name: "Stresa (Lago Maggiore)"
+    region: "Piemonte"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "lake"
+    category: "lake"
+    primary_station: "Stresa"
+    latitude: 45.8847
+    longitude: 8.5392
+    fastest_travel_time_hours: 3.6
+    typical_travel_time_hours: 4.1
+    changes: 1
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenord / EuroCity"
+    transfer_hubs:
+      - "Milano Centrale"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct Intercity SML to Milano Centrale (~2h 15m), then Trenord/Eurocity to Stresa (~1h 05m). Very smooth 1-change connection."
+    sunday_return_notes: "Regular trains from Stresa to Milano Centrale with direct IC back to SML."
+    source_citation: "Trenitalia & Trenord Timetables"
+    notes: "Jewel of Lake Maggiore: Borromean Islands (Isola Bella, Isola dei Pescatori, Isola Madre) with frequent passenger ferries right from the lakeside promenade."
+
+  - id: "orta-san-giulio"
+    name: "Orta San Giulio (Lago d'Orta)"
+    region: "Piemonte"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "lake"
+    category: "lake"
+    primary_station: "Orta-Miasino"
+    latitude: 45.7978
+    longitude: 8.4139
+    fastest_travel_time_hours: 4.4
+    typical_travel_time_hours: 5.0
+    changes: 2
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Regionale"
+    transfer_hubs:
+      - "Milano Centrale"
+      - "Novara"
+    last_mile_bus_required: false
+    last_mile_bus_notes: "Station Orta-Miasino is ~1.5km from village center (downhill walk or local electric shuttle bus)."
+    minimum_child_age_spa: null
+    friday_departure_notes: "Train SML to Milano (~2h 15m), Milano to Novara (~35m), regional train Novara to Orta-Miasino (~50m)."
+    sunday_return_notes: "Sunday connections operate every 2 hours via Novara and Milano."
+    source_citation: "Trenitalia Regional Timetable (Novara - Domodossola line)"
+    notes: "Romantic tranquil lake, UNESCO Sacro Monte di Orta, boat crossing to Isola San Giulio."
+
+  - id: "bardonecchia"
+    name: "Bardonecchia"
+    region: "Piemonte"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "mountain"
+    category: "mountain"
+    primary_station: "Bardonecchia"
+    latitude: 45.0781
+    longitude: 6.7028
+    fastest_travel_time_hours: 4.4
+    typical_travel_time_hours: 4.9
+    changes: 2
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Regionale Veloce"
+      - "Trenitalia SFM (Line SFM3)"
+    transfer_hubs:
+      - "Genova Piazza Principe"
+      - "Torino Porta Nuova"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Train SML to Genova (~35m), Genova to Torino (~1h 50m), direct SFM3 train to Bardonecchia (~1h 20m)."
+    sunday_return_notes: "Hourly SFM3 trains back to Torino Porta Nuova, connecting to Genova and SML."
+    source_citation: "Trenitalia SFM3 Torino-Bardonecchia Timetable"
+    notes: "Alpine resort town at 1,300m elevation. Direct train station right in town; easy access to skiing in winter and family Alpine hikes in summer."
+
+  # ============================================================================
+  # LOMBARDIA - TERME & SPA
+  # ============================================================================
+  - id: "sirmione"
+    name: "Sirmione (Terme di Sirmione)"
+    region: "Lombardia"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Desenzano del Garda-Sirmione"
+    latitude: 45.4925
+    longitude: 10.6083
+    fastest_travel_time_hours: 3.7
+    typical_travel_time_hours: 4.2
+    changes: 2
+    transit_mode: "train+bus"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciarossa / Regionale Veloce"
+      - "Arriva Italia Brescia (Line LN026)"
+    transfer_hubs:
+      - "Milano Centrale"
+      - "Desenzano del Garda-Sirmione"
+    last_mile_bus_required: true
+    last_mile_bus_notes: "Arriva bus LN026 departs outside Desenzano station every 20-30 min to Sirmione / Colombare / Largo Faselo (takes 20 min). Runs until 22:30."
+    minimum_child_age_spa: 2
+    friday_departure_notes: "Direct Intercity SML to Milano Centrale (~2h 15m), Frecciarossa Milano to Desenzano (~50m), then LN026 bus (~20m). Extremely well-connected."
+    sunday_return_notes: "Frequent LN026 bus back to Desenzano station; hourly high-speed/regional trains to Milano Centrale, connecting to direct IC to SML."
+    source_citation: "Trenitalia Timetable + Arriva Linea LN026 Timetable"
+    notes: "Famous sulfur thermal baths (Aquaria Thermal Spa Resort), Scaligero Castle on the lake, Grotte di Catullo Roman ruins. Aquaria admits children accompanied by adults with dedicated family areas."
+
+  - id: "san-pellegrino-terme"
+    name: "San Pellegrino Terme"
+    region: "Lombardia"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Bergamo"
+    latitude: 45.8394
+    longitude: 9.6667
+    fastest_travel_time_hours: 4.2
+    typical_travel_time_hours: 4.8
+    changes: 2
+    transit_mode: "train+bus"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenord Regionale"
+      - "Arriva Bergamo (Line B / Valle Brembana)"
+    transfer_hubs:
+      - "Milano Centrale"
+      - "Bergamo"
+    last_mile_bus_required: true
+    last_mile_bus_notes: "Arriva Bergamo Line B leaves Bergamo Autostazione (opposite train station) every 30-60 min to San Pellegrino Terme (takes ~45 min). Operates on Sundays."
+    minimum_child_age_spa: 14
+    friday_departure_notes: "Train SML to Milano Centrale (~2h 15m), Trenord to Bergamo (~48m), Arriva bus Line B to San Pellegrino (~45m)."
+    sunday_return_notes: "Hourly bus back to Bergamo, then regular train connections to Milano Centrale and SML."
+    source_citation: "Arriva Bergamo Linea B Timetable + Trenord Timetable"
+    notes: "Belle Époque spa town famous for Grand Hotel, Casino, San Pellegrino mineral water, and QC Terme San Pellegrino. Important note: QC Terme requires minimum age of 14 for wellness area (15yo admitted, 7yo excluded from main thermal circuit)."
+
+  - id: "bormio"
+    name: "Bormio"
+    region: "Lombardia"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Tirano"
+    latitude: 46.4678
+    longitude: 10.3714
+    fastest_travel_time_hours: 5.8
+    typical_travel_time_hours: 6.5
+    changes: 2
+    transit_mode: "train+bus"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenord Regionale Veloce (Line RE8)"
+      - "Automobilistica Perego (Line Tirano-Bormio)"
+    transfer_hubs:
+      - "Milano Centrale"
+      - "Tirano"
+    last_mile_bus_required: true
+    last_mile_bus_notes: "Perego bus departs Tirano FS/RhB station square hourly to Bormio Autostazione (~35 min). Timed to meet Trenord RE8 trains from Milano."
+    minimum_child_age_spa: 5
+    friday_departure_notes: "Train SML to Milano Centrale (~2h 15m), Trenord RE8 to Tirano (~2h 30m), Perego bus to Bormio (~35m). Total door-to-door ~6h 15m."
+    sunday_return_notes: "Perego bus departs Bormio every 1-2 hours on Sundays connecting with Trenord RE8 from Tirano back to Milano Centrale, then IC to SML."
+    source_citation: "Automobilistica Perego Tirano-Bormio Timetable + Trenord RE8 Timetable"
+    notes: "Premier thermal destination in the Alps: QC Terme Bagni Vecchi (Roman baths carved in rock) and Bagni Nuovi (extensive park), plus Bormio Terme public complex (which welcomes children of all ages with dedicated slides and thermal pools!)."
+
+  - id: "boario-terme"
+    name: "Darfo Boario Terme"
+    region: "Lombardia"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Boario Terme"
+    latitude: 45.8894
+    longitude: 10.1878
+    fastest_travel_time_hours: 4.8
+    typical_travel_time_hours: 5.3
+    changes: 2
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciarossa"
+      - "Trenord Regionale (Brescia-Iseo-Edolo)"
+    transfer_hubs:
+      - "Milano Centrale"
+      - "Brescia"
+    last_mile_bus_required: false
+    last_mile_bus_notes: "The railway station 'Boario Terme' is directly in the town center, 200m from Parco delle Terme di Boario."
+    minimum_child_age_spa: 3
+    friday_departure_notes: "Train SML to Milano Centrale (~2h 15m), Frecciarossa to Brescia (~36m), Trenord Brescia-Edolo train to Boario Terme (~1h 15m)."
+    sunday_return_notes: "Trenord operates trains every 2 hours on Sunday connecting back to Brescia, Milano, and SML."
+    source_citation: "Trenord Linea Brescia-Iseo-Edolo Timetable"
+    notes: "Val Camonica thermal park, four historic healing springs, family-friendly thermal spa with dedicated children's wellness treatments and adventure pool."
+
+  - id: "salice-terme"
+    name: "Salice Terme"
+    region: "Lombardia"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Voghera"
+    latitude: 44.9142
+    longitude: 9.0272
+    fastest_travel_time_hours: 2.2
+    typical_travel_time_hours: 2.6
+    changes: 1
+    transit_mode: "train+bus"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Autoguidovie Pavia (Line 137)"
+    transfer_hubs:
+      - "Voghera"
+    last_mile_bus_required: true
+    last_mile_bus_notes: "Autoguidovie line 137 departs Voghera FS station every 30-60 min to Salice Terme (takes ~20 min)."
+    minimum_child_age_spa: 4
+    friday_departure_notes: "Direct Intercity SML to Voghera takes only ~1h 30m! Then quick 20-minute bus."
+    sunday_return_notes: "Bus 137 back to Voghera FS, then direct Intercity back to SML in ~1h 30m."
+    source_citation: "Trenitalia Timetable + Autoguidovie Linea 137 Timetable"
+    notes: "Oltrepò Pavese thermal spa village in the green hills. Bromine and sulfur waters, Spa President, quick escape under 2.5h from SML."
+
+  - id: "terme-di-miradolo"
+    name: "Miradolo Terme"
+    region: "Lombardia"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Miradolo Terme"
+    latitude: 45.1661
+    longitude: 9.4472
+    fastest_travel_time_hours: 2.7
+    typical_travel_time_hours: 3.1
+    changes: 1
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenord Regionale (Pavia-Codogno line)"
+    transfer_hubs:
+      - "Pavia"
+    last_mile_bus_required: false
+    last_mile_bus_notes: "Station is right in the village; thermal park is 1km away."
+    minimum_child_age_spa: 3
+    friday_departure_notes: "Direct Intercity SML to Pavia (~1h 45m), then Trenord regional train Pavia-Codogno to Miradolo Terme (~35m)."
+    sunday_return_notes: "Regional train back to Pavia with direct IC connection to SML."
+    source_citation: "Trenord Pavia-Codogno Timetable"
+    notes: "Thermal park in the hills of San Colombano al Lambro with four distinct springs and outdoor pools."
+
+  # ============================================================================
+  # LOMBARDIA - LAKES & MOUNTAINS
+  # ============================================================================
+  - id: "como"
+    name: "Como (Lago di Como)"
+    region: "Lombardia"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "lake"
+    category: "lake"
+    primary_station: "Como San Giovanni"
+    latitude: 45.8081
+    longitude: 9.0852
+    fastest_travel_time_hours: 3.2
+    typical_travel_time_hours: 3.6
+    changes: 1
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenord / TILO / EuroCity"
+    transfer_hubs:
+      - "Milano Centrale"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct Intercity SML to Milano Centrale (~2h 15m), then frequent Trenord/TILO/EuroCity train to Como San Giovanni (~36-45m)."
+    sunday_return_notes: "Trains from Como to Milano Centrale every 30 min; direct IC connection back to SML."
+    source_citation: "Trenitalia & Trenord Timetables"
+    notes: "Lake Como gateway: historic walled town, lakefront promenade, Brunate funicular railway, passenger ferries."
+
+  - id: "varenna"
+    name: "Varenna (Lago di Como)"
+    region: "Lombardia"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "lake"
+    category: "lake"
+    primary_station: "Varenna-Esino"
+    latitude: 46.0111
+    longitude: 9.2847
+    fastest_travel_time_hours: 3.6
+    typical_travel_time_hours: 4.1
+    changes: 1
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenord Regionale Veloce (Line RE8)"
+    transfer_hubs:
+      - "Milano Centrale"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct Intercity SML to Milano Centrale (~2h 15m), then direct Trenord RE8 (Milano-Tirano line) to Varenna-Esino (~1h 04m)."
+    sunday_return_notes: "Hourly RE8 trains from Varenna-Esino back to Milano Centrale with direct IC connection to SML."
+    source_citation: "Trenord Linea RE8 Timetable"
+    notes: "Picturesque eastern shore village: Villa Monastero botanical gardens, Castello di Vezio, Lover's Walk promenade. Direct rail station."
+
+  - id: "bellagio"
+    name: "Bellagio (Lago di Como)"
+    region: "Lombardia"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "lake"
+    category: "lake"
+    primary_station: "Varenna-Esino"
+    latitude: 45.9875
+    longitude: 9.2625
+    fastest_travel_time_hours: 4.2
+    typical_travel_time_hours: 4.7
+    changes: 2
+    transit_mode: "train+bus"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenord Regionale Veloce (RE8)"
+      - "Navigazione Laghi (Ferry)"
+    transfer_hubs:
+      - "Milano Centrale"
+      - "Varenna-Esino / Varenna Ferry Dock"
+    last_mile_bus_required: true
+    last_mile_bus_notes: "Short 400m downhill walk from Varenna-Esino station to ferry dock, then frequent 15-minute public car/passenger ferry across the lake to Bellagio pier."
+    minimum_child_age_spa: null
+    friday_departure_notes: "Train SML to Milano (~2h 15m), train to Varenna (~1h 04m), ferry to Bellagio (~15m). Ferries run until ~22:00."
+    sunday_return_notes: "Frequent Sunday evening ferries to Varenna connecting to RE8 trains to Milano and IC to SML."
+    source_citation: "Navigazione Laghi Lake Como Ferry Timetable"
+    notes: "'Pearl of Lake Como' located at the junction of the lake's three branches. Villa Melzi gardens, cobblestone stepped lanes, splendid panorama."
+
+  - id: "desenzano-del-garda"
+    name: "Desenzano del Garda"
+    region: "Lombardia"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "lake"
+    category: "lake"
+    primary_station: "Desenzano del Garda-Sirmione"
+    latitude: 45.4689
+    longitude: 10.5358
+    fastest_travel_time_hours: 3.4
+    typical_travel_time_hours: 3.8
+    changes: 1
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciarossa"
+      - "Trenitalia Regionale Veloce"
+    transfer_hubs:
+      - "Milano Centrale"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct Intercity SML to Milano Centrale (~2h 15m), then Frecciarossa to Desenzano (~50m) or Regionale Veloce (~1h 20m)."
+    sunday_return_notes: "Frequent trains all evening back to Milano Centrale, connecting to IC to SML."
+    source_citation: "Trenitalia Timetable"
+    notes: "Lively southern Lake Garda town: Roman villa mosaics, medieval castle, lake harbor, pedestrian shopping center, beach promenades."
+
+  - id: "iseo"
+    name: "Iseo (Lago d'Iseo)"
+    region: "Lombardia"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "lake"
+    category: "lake"
+    primary_station: "Iseo"
+    latitude: 45.6606
+    longitude: 10.0525
+    fastest_travel_time_hours: 3.8
+    typical_travel_time_hours: 4.3
+    changes: 2
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciarossa"
+      - "Trenord Regionale (Brescia-Iseo)"
+    transfer_hubs:
+      - "Milano Centrale"
+      - "Brescia"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Train SML to Milano (~2h 15m), Frecciarossa to Brescia (~36m), Trenord train Brescia to Iseo (~30m)."
+    sunday_return_notes: "Trains run hourly on Sunday connecting back to Brescia and Milano."
+    source_citation: "Trenord Brescia-Iseo Timetable"
+    notes: "Franciacorta wine gateway and picturesque lakefront. Regular 10-minute passenger boats connect Iseo to Monte Isola (largest lake island in Southern Europe, traffic-free)."
+
+  - id: "tirano"
+    name: "Tirano"
+    region: "Lombardia"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "mountain"
+    category: "mountain"
+    primary_station: "Tirano"
+    latitude: 46.2161
+    longitude: 10.1742
+    fastest_travel_time_hours: 5.1
+    typical_travel_time_hours: 5.6
+    changes: 1
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenord Regionale Veloce (Line RE8)"
+    transfer_hubs:
+      - "Milano Centrale"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct Intercity SML to Milano Centrale (~2h 15m), direct Trenord RE8 along Lake Como and Valtellina to Tirano (~2h 30m)."
+    sunday_return_notes: "Hourly RE8 departures from Tirano to Milano Centrale, connecting to IC to SML."
+    source_citation: "Trenord Linea RE8 Timetable"
+    notes: "Alpine Valtellina town and southern terminal of the world-famous UNESCO Bernina Express / Rhaetian Railway into the Swiss Alps."
+
+  - id: "chiavenna"
+    name: "Chiavenna"
+    region: "Lombardia"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "mountain"
+    category: "mountain"
+    primary_station: "Chiavenna"
+    latitude: 46.3214
+    longitude: 9.3986
+    fastest_travel_time_hours: 4.4
+    typical_travel_time_hours: 4.9
+    changes: 2
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenord Regionale Veloce (RE8)"
+      - "Trenord Regionale (Colico-Chiavenna)"
+    transfer_hubs:
+      - "Milano Centrale"
+      - "Colico"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Train SML to Milano (~2h 15m), train to Colico (~1h 25m), connecting branch train to Chiavenna (~30m)."
+    sunday_return_notes: "Regular 2-hour interval services connecting Colico and Milano on Sundays."
+    source_citation: "Trenord Timetable"
+    notes: "Historic Alpine valley town: Crotti (natural wine cellars), Acquafraggia waterfalls, Palazzo Vertemate Franchi, Alpine gastronomy (bresaola, pizzoccheri)."
+
+  # ============================================================================
+  # LOMBARDIA - ART CITIES
+  # ============================================================================
+  - id: "milano"
+    name: "Milano"
+    region: "Lombardia"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "city"
+    category: "art_city"
+    primary_station: "Milano Centrale"
+    latitude: 45.4642
+    longitude: 9.1900
+    fastest_travel_time_hours: 2.2
+    typical_travel_time_hours: 2.4
+    changes: 0
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciabianca"
+    transfer_hubs: []
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct Intercity trains run multiple times daily (e.g. IC 658, IC 662, IC 670) without any changes, taking 2h 10m - 2h 25m."
+    sunday_return_notes: "Direct Intercity trains depart Milano Centrale on Sunday evening directly to SML."
+    source_citation: "Trenitalia Timetable (Milano - Genova - Ventimiglia / Livorno line)"
+    notes: "Duomo di Milano, Galleria Vittorio Emanuele II, Castello Sforzesco, Leonardo da Vinci Science & Tech Museum (superb for 7yo and 15yo), QC Termemilano (Porta Romana)."
+
+  - id: "bergamo"
+    name: "Bergamo"
+    region: "Lombardia"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "city"
+    category: "art_city"
+    primary_station: "Bergamo"
+    latitude: 45.6983
+    longitude: 9.6773
+    fastest_travel_time_hours: 3.2
+    typical_travel_time_hours: 3.6
+    changes: 1
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenord Regionale Veloce"
+    transfer_hubs:
+      - "Milano Centrale"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct Intercity SML to Milano Centrale (~2h 15m), then direct Trenord RV to Bergamo (~48m)."
+    sunday_return_notes: "Frequent trains every 30-60 min from Bergamo to Milano Centrale, connecting to IC to SML."
+    source_citation: "Trenord & Trenitalia Timetables"
+    notes: "UNESCO Venetian defensive walls, enchanting Città Alta reached by historic funicular, Piazza Vecchia."
+
+  - id: "brescia"
+    name: "Brescia"
+    region: "Lombardia"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "city"
+    category: "art_city"
+    primary_station: "Brescia"
+    latitude: 45.5416
+    longitude: 10.2118
+    fastest_travel_time_hours: 3.1
+    typical_travel_time_hours: 3.5
+    changes: 1
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciarossa / Italo"
+    transfer_hubs:
+      - "Milano Centrale"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct Intercity SML to Milano Centrale (~2h 15m), then Frecciarossa to Brescia (~36m)."
+    sunday_return_notes: "High-speed trains to Milano Centrale run every 20-30 min."
+    source_citation: "Trenitalia Timetable"
+    notes: "UNESCO Roman Forum (Capitolium), Santa Giulia Museum complex, Castle of Brescia."
+
+  - id: "mantova"
+    name: "Mantova"
+    region: "Lombardia"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "city"
+    category: "art_city"
+    primary_station: "Mantova"
+    latitude: 45.1564
+    longitude: 10.7914
+    fastest_travel_time_hours: 4.1
+    typical_travel_time_hours: 4.6
+    changes: 1
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenord Regionale Veloce (Milano-Mantova line)"
+    transfer_hubs:
+      - "Milano Rogoredo"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct Intercity SML to Milano Rogoredo (~2h 05m), then Trenord direct RV to Mantova (~1h 55m)."
+    sunday_return_notes: "Direct RV to Milano Rogoredo with direct IC connection to SML."
+    source_citation: "Trenord Milano-Mantova Timetable"
+    notes: "UNESCO Renaissance jewel surrounded by three lakes: Palazzo Te, Palazzo Ducale, Castle of San Giorgio."
+
+  - id: "pavia"
+    name: "Pavia"
+    region: "Lombardia"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "city"
+    category: "art_city"
+    primary_station: "Pavia"
+    latitude: 45.1847
+    longitude: 9.1582
+    fastest_travel_time_hours: 1.8
+    typical_travel_time_hours: 2.0
+    changes: 0
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+    transfer_hubs: []
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct Intercity trains from SML stop at Pavia en route to Milano! Travel time only 1h 45m without any changes."
+    sunday_return_notes: "Direct Intercity trains from Pavia to SML take 1h 45m."
+    source_citation: "Trenitalia Timetable"
+    notes: "Historic university city on the Ticino river: Ponte Coperto, Visconti Castle, Cathedral, and nearby Certosa di Pavia monastery."
+
+  # ============================================================================
+  # VALLE D'AOSTA - TERME & MOUNTAINS
+  # ============================================================================
+  - id: "pre-saint-didier"
+    name: "Pré-Saint-Didier (QC Terme)"
+    region: "Valle d'Aosta"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Aosta"
+    latitude: 45.7644
+    longitude: 6.9856
+    fastest_travel_time_hours: 6.5
+    typical_travel_time_hours: 7.3
+    changes: 3
+    transit_mode: "train+bus"
+    transit_operators:
+      - "Trenitalia Regionale Veloce"
+      - "Arriva Italia Valle d'Aosta (Line Aosta-Courmayeur)"
+    transfer_hubs:
+      - "Genova Piazza Principe"
+      - "Torino Porta Susa"
+      - "Aosta"
+    last_mile_bus_required: true
+    last_mile_bus_notes: "Arriva bus from Aosta Autostazione (opposite station) to Pré-Saint-Didier center takes 45-50 min, running hourly. Alternatively direct coach from Torino Corso Vittorio Emanuele II."
+    minimum_child_age_spa: 14
+    friday_departure_notes: "Train SML to Genova PP (~35m), train to Torino (~1h 50m), train/replacement coach to Aosta (~2h), Arriva bus to Pré-Saint-Didier (~45m). Feasible Friday afternoon."
+    sunday_return_notes: "Hourly bus Aosta connection, then trains back via Torino and Genova. Leaves Sunday afternoon ~15:30 to reach SML by 22:30."
+    source_citation: "Arriva Italia Valle d'Aosta Timetable + Trenitalia Timetable"
+    notes: "Legendary thermal bath against Mont Blanc backdrop: QC Terme Pré-Saint-Didier outdoor thermal pools and saunas. Important: QC Terme admits guests aged 14 and older (15yo child admitted, 7yo child excluded from spa circuit)."
+
+  - id: "saint-vincent"
+    name: "Saint-Vincent"
+    region: "Valle d'Aosta"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Châtillon-Saint-Vincent"
+    latitude: 45.7497
+    longitude: 7.6486
+    fastest_travel_time_hours: 5.2
+    typical_travel_time_hours: 5.8
+    changes: 2
+    transit_mode: "train+bus"
+    transit_operators:
+      - "Trenitalia Regionale Veloce"
+      - "Svap / Arriva (Local Shuttle)"
+    transfer_hubs:
+      - "Genova Piazza Principe"
+      - "Torino Porta Susa / Chivasso"
+    last_mile_bus_required: true
+    last_mile_bus_notes: "Local shuttle bus runs every 15-20 min between Châtillon station and Saint-Vincent center/terme (~10 min)."
+    minimum_child_age_spa: 3
+    friday_departure_notes: "Train SML to Genova PP (~35m), Genova to Torino/Chivasso (~1h 45m), regional train/bus to Châtillon-Saint-Vincent (~1h 20m)."
+    sunday_return_notes: "Regular Sunday connections back towards Torino, Genova, and SML."
+    source_citation: "Trenitalia & Svap Timetables"
+    notes: "Terme di Saint-Vincent (Fons Salutis) wellness center and Casino de la Vallée in the Aosta Valley sun basin."
+
+  - id: "courmayeur"
+    name: "Courmayeur"
+    region: "Valle d'Aosta"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "mountain"
+    category: "mountain"
+    primary_station: "Aosta"
+    latitude: 45.7969
+    longitude: 6.9733
+    fastest_travel_time_hours: 6.8
+    typical_travel_time_hours: 7.6
+    changes: 3
+    transit_mode: "train+bus"
+    transit_operators:
+      - "Trenitalia Regionale Veloce"
+      - "Arriva Italia Valle d'Aosta"
+    transfer_hubs:
+      - "Genova Piazza Principe"
+      - "Torino Porta Susa"
+      - "Aosta"
+    last_mile_bus_required: true
+    last_mile_bus_notes: "Arriva bus connects Aosta station directly to Courmayeur Piazzale Monte Bianco (~55 min, runs hourly)."
+    minimum_child_age_spa: null
+    friday_departure_notes: "SML to Genova to Torino, then coach to Aosta/Courmayeur. Reaches destination within ~7-7.5 hours (within 8h soft limit)."
+    sunday_return_notes: "Afternoon bus to Aosta / Torino coach, connecting to trains back to SML."
+    source_citation: "Arriva Italia Valle d'Aosta Timetable"
+    notes: "Foot of Mont Blanc: Skyway Monte Bianco revolving cable car (spectacular family experience), Val Ferret Alpine scenery."
+
+  - id: "aosta"
+    name: "Aosta"
+    region: "Valle d'Aosta"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "city"
+    category: "art_city"
+    primary_station: "Aosta"
+    latitude: 45.7372
+    longitude: 7.3197
+    fastest_travel_time_hours: 5.8
+    typical_travel_time_hours: 6.4
+    changes: 2
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Regionale Veloce"
+    transfer_hubs:
+      - "Genova Piazza Principe"
+      - "Torino Porta Susa"
+    last_mile_bus_required: false
+    last_mile_bus_notes: "Note: regional rail corridor between Ivrea and Aosta may utilize coordinated Trenitalia rail-replacement express buses during modernization works."
+    minimum_child_age_spa: null
+    friday_departure_notes: "Train SML to Genova PP (~35m), Genova to Torino Porta Susa (~1h 45m), train/rail-link coach to Aosta (~2h)."
+    sunday_return_notes: "Regular Sunday afternoon departures to Torino, connecting to Genova and SML."
+    source_citation: "Trenitalia Timetable"
+    notes: "'Rome of the Alps': Roman Theatre, Arch of Augustus, Porta Praetoria, Pila cable car connected directly to Aosta town."
+
+  # ============================================================================
+  # TRENTINO-ALTO ADIGE - TERME & MOUNTAINS
+  # ============================================================================
+  - id: "merano"
+    name: "Merano (Terme Merano)"
+    region: "Trentino-Alto Adige"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Merano / Meran"
+    latitude: 46.6714
+    longitude: 11.1594
+    fastest_travel_time_hours: 6.8
+    typical_travel_time_hours: 7.5
+    changes: 3
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciarossa / Italo"
+      - "SAD / Trenitalia Regionale"
+    transfer_hubs:
+      - "Milano Centrale"
+      - "Verona Porta Nuova"
+      - "Bolzano / Bozen"
+    last_mile_bus_required: false
+    last_mile_bus_notes: "Merano railway station is ~1km from Terme Merano; regular city buses 1/3/4 run every 10 min, or an easy 15-minute flat walk."
+    minimum_child_age_spa: 0
+    friday_departure_notes: "Train SML to Milano Centrale (~2h 15m), Frecciarossa to Verona/Bolzano (~2h 45m), regional shuttle to Merano (~40m). Total ~7h. Meets 8h soft limit."
+    sunday_return_notes: "Depart Merano by 14:30 on Sunday via Bolzano/Verona/Milano to arrive in SML by 22:30."
+    source_citation: "Trenitalia & SAD Alto Adige Timetables"
+    notes: "World-class thermal baths: Terme Merano cube complex with 25 indoor/outdoor pools. Terme Merano fully welcomes families and children of all ages (pools, family park). Trauttmansdorff castle gardens."
+
+  - id: "levico-terme"
+    name: "Levico Terme"
+    region: "Trentino-Alto Adige"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Levico Terme"
+    latitude: 46.0117
+    longitude: 11.3039
+    fastest_travel_time_hours: 5.6
+    typical_travel_time_hours: 6.2
+    changes: 3
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciarossa"
+      - "Trentino Trasporti / Trenitalia Regionale (Valsugana Line)"
+    transfer_hubs:
+      - "Milano Centrale"
+      - "Verona Porta Nuova"
+      - "Trento"
+    last_mile_bus_required: false
+    last_mile_bus_notes: "Levico Terme station is on the Valsugana line; ~1km from spa park and lake."
+    minimum_child_age_spa: 3
+    friday_departure_notes: "Train SML to Milano (~2h 15m), Frecciarossa to Verona (~1h 13m), RV to Trento (~55m), Valsugana train to Levico (~45m)."
+    sunday_return_notes: "Valsugana trains run every 1-2 hours on Sunday connecting back to Trento, Verona, Milano, and SML."
+    source_citation: "Trentino Trasporti Valsugana Timetable"
+    notes: "Thermal spa town on Lake Levico: Arsenical-ferruginous thermal waters, Imperial Grand Hotel park, clean swimmable lake."
+
+  - id: "terme-di-comano"
+    name: "Terme di Comano (Ponte Arche)"
+    region: "Trentino-Alto Adige"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Trento"
+    latitude: 46.0417
+    longitude: 10.8750
+    fastest_travel_time_hours: 6.1
+    typical_travel_time_hours: 6.8
+    changes: 3
+    transit_mode: "train+bus"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciarossa"
+      - "Trentino Trasporti (Line B201)"
+    transfer_hubs:
+      - "Milano Centrale"
+      - "Verona Porta Nuova"
+      - "Trento"
+    last_mile_bus_required: true
+    last_mile_bus_notes: "Trentino Trasporti line B201 departs Trento Autostazione (next to FS station) every 60-90 min to Ponte Arche / Terme di Comano (~50 min)."
+    minimum_child_age_spa: 0
+    friday_departure_notes: "Train SML to Trento via Milano and Verona (~4h 45m), then bus B201 into the Brenta Dolomites foothills."
+    sunday_return_notes: "Sunday bus B201 back to Trento station connecting to Verona/Milano trains."
+    source_citation: "Trentino Trasporti Linea B201 Timetable"
+    notes: "Europe's leading thermal center specialized for children and skin wellness (dermatological therapies, soothing hypoallergenic waters, huge 14-hectare park for families)."
+
+  - id: "trento"
+    name: "Trento"
+    region: "Trentino-Alto Adige"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "city"
+    category: "art_city"
+    primary_station: "Trento"
+    latitude: 46.0667
+    longitude: 11.1167
+    fastest_travel_time_hours: 4.4
+    typical_travel_time_hours: 4.9
+    changes: 2
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciarossa"
+      - "Trenitalia / ÖBB Regionale Veloce"
+    transfer_hubs:
+      - "Milano Centrale"
+      - "Verona Porta Nuova"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Train SML to Milano Centrale (~2h 15m), Frecciarossa to Verona (~1h 13m), RV to Trento (~55m)."
+    sunday_return_notes: "Regular high-speed/regional connections all Sunday evening back to Verona, Milano, and SML."
+    source_citation: "Trenitalia Timetable"
+    notes: "Capital of Trentino: MUSE Science Museum designed by Renzo Piano (outstanding for 7yo and 15yo), Castello del Buonconsiglio, Piazza Duomo."
+
+  - id: "rovereto"
+    name: "Rovereto"
+    region: "Trentino-Alto Adige"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "city"
+    category: "art_city"
+    primary_station: "Rovereto"
+    latitude: 45.8908
+    longitude: 11.0400
+    fastest_travel_time_hours: 4.2
+    typical_travel_time_hours: 4.7
+    changes: 2
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciarossa"
+      - "Trenitalia Regionale Veloce"
+    transfer_hubs:
+      - "Milano Centrale"
+      - "Verona Porta Nuova"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Train SML to Milano Centrale (~2h 15m), Frecciarossa to Verona (~1h 13m), RV to Rovereto (~40m)."
+    sunday_return_notes: "Frequent trains all evening back to Verona and Milano."
+    source_citation: "Trenitalia Timetable"
+    notes: "MART Museum of Modern and Contemporary Art, Venetian Castle, Bell of the Fallen (Campana dei Caduti)."
+
+  - id: "bolzano"
+    name: "Bolzano / Bozen"
+    region: "Trentino-Alto Adige"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "mountain"
+    category: "mountain"
+    primary_station: "Bolzano / Bozen"
+    latitude: 46.4983
+    longitude: 11.3548
+    fastest_travel_time_hours: 5.6
+    typical_travel_time_hours: 6.2
+    changes: 2
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciarossa"
+      - "EuroCity (DB/ÖBB)"
+    transfer_hubs:
+      - "Milano Centrale"
+      - "Verona Porta Nuova"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Train SML to Milano Centrale (~2h 15m), Frecciarossa/Italo to Verona (~1h 13m), Eurocity/Frecciargento to Bolzano (~1h 30m). Some weekend direct Frecciarossa Milano-Bolzano."
+    sunday_return_notes: "Direct or 1-change high-speed trains Bolzano-Milano, connecting to IC to SML."
+    source_citation: "Trenitalia Timetable"
+    notes: "Gateway to the Dolomites: South Tyrol Museum of Archaeology (Ötzi the Iceman), Renon cable car right next to train station, Waltherplatz."
+
+  - id: "riva-del-garda"
+    name: "Riva del Garda"
+    region: "Trentino-Alto Adige"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "lake"
+    category: "lake"
+    primary_station: "Rovereto"
+    latitude: 45.8858
+    longitude: 10.8411
+    fastest_travel_time_hours: 5.2
+    typical_travel_time_hours: 5.8
+    changes: 3
+    transit_mode: "train+bus"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciarossa"
+      - "Trentino Trasporti (Line B301)"
+    transfer_hubs:
+      - "Milano Centrale"
+      - "Verona Porta Nuova"
+      - "Rovereto"
+    last_mile_bus_required: true
+    last_mile_bus_notes: "Trentino Trasporti line B301 connects Rovereto train station directly to Riva del Garda center/lakeside (~35-40 min, departs every 30-60 min)."
+    minimum_child_age_spa: null
+    friday_departure_notes: "Train SML to Rovereto via Milano and Verona (~4h 15m), then bus B301 down to Riva (~35m)."
+    sunday_return_notes: "Frequent bus B301 to Rovereto FS connecting to trains back to Verona, Milano, and SML."
+    source_citation: "Trentino Trasporti Linea B301 Timetable"
+    notes: "Dramatic northern tip of Lake Garda surrounded by towering cliffs: windsurfing, sailing, Rocca castle, Ponale trail."
+
+  # ============================================================================
+  # EMILIA-ROMAGNA - TERME & SPA
+  # ============================================================================
+  - id: "salsomaggiore-terme"
+    name: "Salsomaggiore Terme"
+    region: "Emilia-Romagna"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Salsomaggiore Terme"
+    latitude: 44.8156
+    longitude: 10.0053
+    fastest_travel_time_hours: 3.2
+    typical_travel_time_hours: 3.6
+    changes: 2
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Regionale"
+    transfer_hubs:
+      - "Milano Centrale / Piacenza"
+      - "Fidenza"
+    last_mile_bus_required: false
+    last_mile_bus_notes: "Direct 9-minute dedicated regional shuttle train connects Fidenza main station to Salsomaggiore Terme terminal. Station is right in town."
+    minimum_child_age_spa: 4
+    friday_departure_notes: "Option 1: SML to Milano/Piacenza, then regional to Fidenza and shuttle to Salsomaggiore. Option 2: SML to La Spezia, Pontremolese train to Fidenza. Total ~3h 20m."
+    sunday_return_notes: "Shuttle trains run every 30-60 minutes connecting to mainline trains at Fidenza."
+    source_citation: "Trenitalia Regional Timetable (Fidenza - Salsomaggiore line)"
+    notes: "Magnificent Art Nouveau / Liberty spa palace (Terme Berzieri), thermal pools, peaceful green park. Entirely reachable by rail in ~3.5 hours."
+
+  - id: "castrocaro-terme"
+    name: "Castrocaro Terme"
+    region: "Emilia-Romagna"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Forlì"
+    latitude: 44.1758
+    longitude: 11.9772
+    fastest_travel_time_hours: 4.6
+    typical_travel_time_hours: 5.2
+    changes: 2
+    transit_mode: "train+bus"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciarossa"
+      - "Start Romagna (Line 91)"
+    transfer_hubs:
+      - "Milano Centrale / Bologna Centrale"
+      - "Forlì"
+    last_mile_bus_required: true
+    last_mile_bus_notes: "Start Romagna line 91 departs Forlì train station every 30-60 min to Castrocaro Terme center (journey takes ~25 min)."
+    minimum_child_age_spa: 4
+    friday_departure_notes: "Train SML to Milano/Bologna (~3h 15m), Frecciarossa/RV to Forlì (~40m), Start Romagna bus 91 (~25m)."
+    sunday_return_notes: "Bus 91 runs on Sundays back to Forlì station connecting to Frecciarossa/Regionale to Bologna/Milano and SML."
+    source_citation: "Start Romagna Linea 91 Timetable + Trenitalia Timetable"
+    notes: "Art Deco thermal spa palace (Grand Hotel Terme & Terme di Castrocaro), salsobromoiodic and sulfureous waters, medieval fortress."
+
+  - id: "riolo-terme"
+    name: "Riolo Terme"
+    region: "Emilia-Romagna"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Castel Bolognese-Riolo Terme"
+    latitude: 44.2764
+    longitude: 11.7247
+    fastest_travel_time_hours: 4.2
+    typical_travel_time_hours: 4.7
+    changes: 2
+    transit_mode: "train+bus"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Regionale"
+      - "Start Romagna (Line 214)"
+    transfer_hubs:
+      - "Bologna Centrale"
+      - "Castel Bolognese-Riolo Terme"
+    last_mile_bus_required: true
+    last_mile_bus_notes: "Start Romagna line 214 departs Castel Bolognese station to Riolo Terme (~15 min)."
+    minimum_child_age_spa: 3
+    friday_departure_notes: "Train SML to Bologna Centrale (~3h 15m), train to Castel Bolognese (~25m), bus 214 (~15m)."
+    sunday_return_notes: "Bus 214 connects to Bologna trains on Sundays."
+    source_citation: "Start Romagna Linea 214 Timetable"
+    notes: "Thermal establishment set in a centuries-old park, known for therapeutic mud baths and thermal pool."
+
+  - id: "bagno-di-romagna"
+    name: "Bagno di Romagna"
+    region: "Emilia-Romagna"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Cesena"
+    latitude: 43.8344
+    longitude: 11.9619
+    fastest_travel_time_hours: 5.8
+    typical_travel_time_hours: 6.6
+    changes: 2
+    transit_mode: "train+bus"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciarossa"
+      - "Start Romagna (Line 138)"
+    transfer_hubs:
+      - "Bologna Centrale"
+      - "Cesena"
+    last_mile_bus_required: true
+    last_mile_bus_notes: "Start Romagna line 138 departs Cesena FS station to Bagno di Romagna (~1h 05m). Runs every 1-2 hours."
+    minimum_child_age_spa: 0
+    friday_departure_notes: "Train SML to Bologna (~3h 15m), train to Cesena (~45m), bus 138 into the Apennine national park (~1h 05m)."
+    sunday_return_notes: "Regular Sunday bus 138 back to Cesena connecting to mainline trains."
+    source_citation: "Start Romagna Linea 138 Timetable"
+    notes: "Apennine spa sanctuary (Ròseo Euroterme Wellness Resort): warm 45°C hyperthermal waters, Foresta delle Fate (Fairy Tale Forest walk - delightful for 7yo), Casentinesi National Park."
+
+  - id: "terme-della-salvarola"
+    name: "Terme della Salvarola (Sassuolo)"
+    region: "Emilia-Romagna"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Modena"
+    latitude: 44.5261
+    longitude: 10.7719
+    fastest_travel_time_hours: 4.1
+    typical_travel_time_hours: 4.6
+    changes: 2
+    transit_mode: "train+bus"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciarossa"
+      - "SETA Modena (Line 670 / local shuttle)"
+    transfer_hubs:
+      - "Milano Centrale / Bologna Centrale"
+      - "Modena / Sassuolo"
+    last_mile_bus_required: true
+    last_mile_bus_notes: "SETA bus or suburban train Modena-Sassuolo Radici (~35 min), then short 10-minute bus to Terme della Salvarola."
+    minimum_child_age_spa: 4
+    friday_departure_notes: "Train SML to Modena via Milano or Parma (~3h 30m), then SETA connection to Salvarola."
+    sunday_return_notes: "Regular Sunday return via Modena to Milano/SML."
+    source_citation: "SETA Modena Timetable"
+    notes: "Balnea thermal center on the Modenese hills: mineral sulfur and saline pools surrounded by a large private park."
+
+  # ============================================================================
+  # EMILIA-ROMAGNA - ART CITIES & COASTAL
+  # ============================================================================
+  - id: "parma"
+    name: "Parma"
+    region: "Emilia-Romagna"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "city"
+    category: "art_city"
+    primary_station: "Parma"
+    latitude: 44.8015
+    longitude: 10.3279
+    fastest_travel_time_hours: 2.7
+    typical_travel_time_hours: 3.1
+    changes: 1
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Regionale Veloce"
+      - "Trenitalia Intercity"
+    transfer_hubs:
+      - "La Spezia Centrale"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Take train SML to La Spezia Centrale (~40m), then direct Regionale Veloce over the scenic Pontremolese line through the Apennines to Parma (~1h 50m). Total ~2h 45m."
+    sunday_return_notes: "Direct RV trains run every 2 hours from Parma across the Pontremolese line to La Spezia, connecting to SML."
+    source_citation: "Trenitalia Pontremolese Line Timetable"
+    notes: "Italian Capital of Gastronomy: Prosciutto di Parma, Parmigiano Reggiano, Teatro Regio, Battistero, Palazzo della Pilotta."
+
+  - id: "reggio-emilia"
+    name: "Reggio Emilia"
+    region: "Emilia-Romagna"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "city"
+    category: "art_city"
+    primary_station: "Reggio Emilia"
+    latitude: 44.6989
+    longitude: 10.6308
+    fastest_travel_time_hours: 2.9
+    typical_travel_time_hours: 3.4
+    changes: 1
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciarossa"
+    transfer_hubs:
+      - "Milano Centrale / Reggio Emilia AV Mediopadana"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Train SML to Milano Centrale (~2h 15m), Frecciarossa to Reggio Emilia AV (~45m)."
+    sunday_return_notes: "High speed return to Milano Centrale, connecting to IC to SML."
+    source_citation: "Trenitalia Timetable"
+    notes: "Birthplace of the Italian Tricolore flag, Calatrava bridges, Loris Malaguzzi International Center."
+
+  - id: "modena"
+    name: "Modena"
+    region: "Emilia-Romagna"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "city"
+    category: "art_city"
+    primary_station: "Modena"
+    latitude: 44.6471
+    longitude: 10.9252
+    fastest_travel_time_hours: 3.2
+    typical_travel_time_hours: 3.7
+    changes: 1
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciarossa"
+    transfer_hubs:
+      - "Milano Centrale / Bologna Centrale"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Train SML to Milano Centrale (~2h 15m), Frecciarossa to Modena (~1h 10m)."
+    sunday_return_notes: "High speed trains from Modena to Milano Centrale with direct IC connection to SML."
+    source_citation: "Trenitalia Timetable"
+    notes: "UNESCO Piazza Grande and Ghirlandina tower, Enzo Ferrari Museum (thrilling for 15yo and 7yo alike), balsamic vinegar cellars."
+
+  - id: "bologna"
+    name: "Bologna"
+    region: "Emilia-Romagna"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "city"
+    category: "art_city"
+    primary_station: "Bologna Centrale"
+    latitude: 44.4949
+    longitude: 11.3426
+    fastest_travel_time_hours: 3.4
+    typical_travel_time_hours: 3.8
+    changes: 1
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciarossa / Italo"
+    transfer_hubs:
+      - "Milano Centrale / Firenze SMN"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Route A: SML to Milano Centrale (~2h 15m), Frecciarossa Milano-Bologna (~1h 05m). Route B: SML to Firenze SMN (~2h 45m), Frecciarossa Firenze-Bologna (~35m)."
+    sunday_return_notes: "Trains leave Bologna every 15 min towards Milano, connecting with IC to SML."
+    source_citation: "Trenitalia Timetable"
+    notes: "UNESCO Porticoes, Due Torri (Asinelli), Piazza Maggiore, Fountain of Neptune, unparalleled food scene."
+
+  - id: "ferrara"
+    name: "Ferrara"
+    region: "Emilia-Romagna"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "city"
+    category: "art_city"
+    primary_station: "Ferrara"
+    latitude: 44.8381
+    longitude: 11.6198
+    fastest_travel_time_hours: 3.9
+    typical_travel_time_hours: 4.4
+    changes: 2
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciarossa"
+      - "Trenitalia Regionale Veloce"
+    transfer_hubs:
+      - "Milano Centrale"
+      - "Bologna Centrale"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Train SML to Milano (~2h 15m), Frecciarossa to Bologna (~1h 05m), RV/Frecciarossa to Ferrara (~25m)."
+    sunday_return_notes: "Frequent trains to Bologna and Milano all Sunday evening."
+    source_citation: "Trenitalia Timetable"
+    notes: "UNESCO Renaissance city of the Este dynasty: Castello Estense with moat, Palazzo dei Diamanti, bicycle-friendly city."
+
+  - id: "ravenna"
+    name: "Ravenna"
+    region: "Emilia-Romagna"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "city"
+    category: "art_city"
+    primary_station: "Ravenna"
+    latitude: 44.4184
+    longitude: 12.2035
+    fastest_travel_time_hours: 4.6
+    typical_travel_time_hours: 5.2
+    changes: 2
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciarossa"
+      - "Trenitalia Regionale"
+    transfer_hubs:
+      - "Milano Centrale"
+      - "Bologna Centrale"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Train SML to Milano (~2h 15m), Frecciarossa to Bologna (~1h 05m), direct regional train Bologna to Ravenna (~1h 10m)."
+    sunday_return_notes: "Hourly trains Ravenna to Bologna Centrale, connecting to Milano and SML."
+    source_citation: "Trenitalia Timetable"
+    notes: "Capital of the Western Roman Empire: eight UNESCO early Christian monuments with breathtaking Byzantine mosaics (Basilica di San Vitale, Mausoleo di Galla Placidia)."
+
+  - id: "rimini"
+    name: "Rimini"
+    region: "Emilia-Romagna"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "sea"
+    category: "seaside"
+    primary_station: "Rimini"
+    latitude: 44.0678
+    longitude: 12.5695
+    fastest_travel_time_hours: 4.1
+    typical_travel_time_hours: 4.6
+    changes: 2
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciarossa"
+    transfer_hubs:
+      - "Milano Centrale"
+      - "Bologna Centrale"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Train SML to Milano (~2h 15m), Frecciarossa to Bologna (~1h 05m), Frecciarossa to Rimini (~55m)."
+    sunday_return_notes: "High-speed Frecciarossa from Rimini to Bologna/Milano all Sunday evening."
+    source_citation: "Trenitalia Timetable"
+    notes: "Adriatic coast capital: broad sandy beaches, Tiberius Bridge, Arch of Augustus, Fellini Museum, Rimini Terme."
+
+  # ============================================================================
+  # TOSCANA - TERME & SPA
+  # ============================================================================
+  - id: "montecatini-terme"
+    name: "Montecatini Terme"
+    region: "Toscana"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Montecatini Terme-Monsummano"
+    latitude: 43.8833
+    longitude: 10.7667
+    fastest_travel_time_hours: 2.4
+    typical_travel_time_hours: 2.7
+    changes: 1
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Regionale"
+    transfer_hubs:
+      - "Viareggio"
+    last_mile_bus_required: false
+    last_mile_bus_notes: "Station is right in the center; easy 5-10 minute walk to Terme Tettuccio and thermal parks."
+    minimum_child_age_spa: 0
+    friday_departure_notes: "Train SML to Viareggio (~1h 15m direct Intercity), then regional train Viareggio-Montecatini (~45m). Fast and easy."
+    sunday_return_notes: "Hourly regional trains back to Viareggio connecting with direct Intercity/Regionale to SML."
+    source_citation: "Trenitalia Timetable (Firenze - Lucca - Viareggio line)"
+    notes: "UNESCO Great Spa Towns of Europe: monumental Liberty architecture of Terme Tettuccio, Terme Redi pools, funicular railway to Montecatini Alto."
+
+  - id: "monsummano-terme"
+    name: "Monsummano Terme (Grotta Giusti)"
+    region: "Toscana"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Montecatini Terme-Monsummano"
+    latitude: 43.8697
+    longitude: 10.8147
+    fastest_travel_time_hours: 2.7
+    typical_travel_time_hours: 3.1
+    changes: 2
+    transit_mode: "train+bus"
+    transit_operators:
+      - "Trenitalia Intercity / Regionale"
+      - "Autolinee Toscane (Line U801 / U802)"
+    transfer_hubs:
+      - "Viareggio"
+      - "Montecatini Terme-Monsummano"
+    last_mile_bus_required: true
+    last_mile_bus_notes: "Autolinee Toscane local bus line U801 or U802 runs from Montecatini station to Monsummano Piazza Giusti / Grotta Giusti (~12 min)."
+    minimum_child_age_spa: 6
+    friday_departure_notes: "Train SML to Viareggio to Montecatini (~2h 20m), then 12-minute bus to Grotta Giusti."
+    sunday_return_notes: "Regular Sunday bus back to Montecatini station connecting to Viareggio and SML."
+    source_citation: "Autolinee Toscane Timetable + Trenitalia Timetable"
+    notes: "Grotta Giusti Resort: unique underground thermal cave (Paradiso, Purgatorio, Inferno) with natural subterranean thermal lake and 750 sqm thermal pool."
+
+  - id: "casciana-terme"
+    name: "Casciana Terme"
+    region: "Toscana"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Pontedera-Casciana Terme"
+    latitude: 43.5283
+    longitude: 10.6178
+    fastest_travel_time_hours: 2.9
+    typical_travel_time_hours: 3.4
+    changes: 2
+    transit_mode: "train+bus"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Regionale"
+      - "Autolinee Toscane (Line 410)"
+    transfer_hubs:
+      - "Pisa Centrale"
+      - "Pontedera-Casciana Terme"
+    last_mile_bus_required: true
+    last_mile_bus_notes: "Autolinee Toscane line 410 departs Pontedera FS station every 30-60 min to Casciana Terme piazza (~30 min)."
+    minimum_child_age_spa: 3
+    friday_departure_notes: "Train SML to Pisa Centrale (~1h 40m direct IC), train to Pontedera (~15m), bus 410 to Casciana (~30m)."
+    sunday_return_notes: "Bus 410 operates on Sundays connecting to Pontedera and Pisa trains back to SML."
+    source_citation: "Autolinee Toscane Linea 410 Timetable + Trenitalia Timetable"
+    notes: "Peaceful Tuscan hills spa: Villa Borri, thermal pool 'Balneum' with Mathelda spring water at 36°C, dedicated family pool access."
+
+  - id: "rapolano-terme"
+    name: "Rapolano Terme"
+    region: "Toscana"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Rapolano Terme"
+    latitude: 43.2897
+    longitude: 11.6047
+    fastest_travel_time_hours: 4.1
+    typical_travel_time_hours: 4.6
+    changes: 2
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Regionale"
+    transfer_hubs:
+      - "Pisa Centrale"
+      - "Empoli"
+    last_mile_bus_required: false
+    last_mile_bus_notes: "Rapolano Terme railway station is 800m from Terme Antica Querciolaia and 1.5km from Terme San Giovanni."
+    minimum_child_age_spa: 0
+    friday_departure_notes: "Train SML to Pisa Centrale (~1h 40m), Pisa to Empoli (~30m), direct regional train Empoli-Siena-Chiusi line to Rapolano Terme (~1h 35m). 100% train!"
+    sunday_return_notes: "Regular Sunday regional trains back to Empoli, Pisa, and SML."
+    source_citation: "Trenitalia Regional Timetable (Empoli - Siena - Chiusi line)"
+    notes: "Crete Senesi clay hills: two large thermal complexes (Antica Querciolaia and San Giovanni) with multiple warm pools surrounded by Tuscan cypress hills. Fully child-friendly."
+
+  - id: "chianciano-terme"
+    name: "Chianciano Terme"
+    region: "Toscana"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Chiusi-Chianciano Terme"
+    latitude: 43.0428
+    longitude: 11.8317
+    fastest_travel_time_hours: 4.4
+    typical_travel_time_hours: 4.9
+    changes: 2
+    transit_mode: "train+bus"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Autolinee Toscane (Line T10 / FT4)"
+    transfer_hubs:
+      - "Pisa Centrale / Firenze SMN"
+      - "Chiusi-Chianciano Terme"
+    last_mile_bus_required: true
+    last_mile_bus_notes: "Autolinee Toscane line T10 departs Chiusi FS station directly to Chianciano Terme (Piazza Italia / Terme) every 30-60 min (~25 min)."
+    minimum_child_age_spa: 3
+    friday_departure_notes: "Direct Intercity or 1-change connection down to Chiusi-Chianciano Terme (~3h 45m), then 25-minute bus."
+    sunday_return_notes: "Bus T10 connects directly to northbound trains at Chiusi on Sundays."
+    source_citation: "Autolinee Toscane Linea T10 Timetable + Trenitalia Timetable"
+    notes: "Piscine Termali Theia (4 outdoor and 3 indoor pools fed by Sillene spring, with designated children's thermal wellness area), Terme Sensoriali."
+
+  - id: "bagno-vignoni"
+    name: "Bagno Vignoni (Val d'Orcia)"
+    region: "Toscana"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Buonconvento"
+    latitude: 43.0294
+    longitude: 11.6194
+    fastest_travel_time_hours: 5.3
+    typical_travel_time_hours: 6.1
+    changes: 3
+    transit_mode: "train+bus"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Regionale"
+      - "Autolinee Toscane (Line 112)"
+    transfer_hubs:
+      - "Pisa Centrale"
+      - "Empoli"
+      - "Buonconvento"
+    last_mile_bus_required: true
+    last_mile_bus_notes: "Autolinee Toscane line 112 connects Buonconvento FS station to Bagno Vignoni (~40 min). WARNING: Sunday bus frequency is limited (approx 3 runs/day); check timetable carefully."
+    minimum_child_age_spa: 5
+    friday_departure_notes: "Train SML to Pisa (~1h 40m), Pisa to Empoli (~30m), Empoli to Buonconvento (~1h 10m), bus 112 to Bagno Vignoni (~40m)."
+    sunday_return_notes: "Take afternoon Sunday bus 112 to Buonconvento station, then trains via Empoli/Pisa to SML."
+    source_citation: "Autolinee Toscane Linea 112 Timetable"
+    notes: "Iconic medieval village where the central piazza is a massive 16th-century thermal pool of steaming water. Albergo Le Terme and Posta Marcucci thermal pools overlooking Val d'Orcia."
+
+  - id: "bagni-di-lucca"
+    name: "Bagni di Lucca"
+    region: "Toscana"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Bagni di Lucca"
+    latitude: 44.0108
+    longitude: 10.5833
+    fastest_travel_time_hours: 2.8
+    typical_travel_time_hours: 3.2
+    changes: 2
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Regionale"
+    transfer_hubs:
+      - "Viareggio"
+      - "Lucca"
+    last_mile_bus_required: false
+    last_mile_bus_notes: "Station is at Fornoli; 1.5km to Ponte a Serraglio / Terme Jean Varraud (served by local bus or 20-min walk)."
+    minimum_child_age_spa: 4
+    friday_departure_notes: "Train SML to Viareggio (~1h 15m), train to Lucca (~20m), scenic Garfagnana branch train Lucca to Bagni di Lucca (~28m)."
+    sunday_return_notes: "Trains run every 1-2 hours on Sunday connecting back to Lucca, Viareggio, and SML."
+    source_citation: "Trenitalia Lucca-Aulla Line Timetable"
+    notes: "Historic thermal valley where Byron, Shelley, and Puccini stayed. Terme Jean Varraud and natural steam caves (Grotta Grande and Grotta Paolina)."
+
+  - id: "saturnia"
+    name: "Saturnia (Terme di Saturnia)"
+    region: "Toscana"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Albinia"
+    latitude: 42.6644
+    longitude: 11.5147
+    fastest_travel_time_hours: 5.6
+    typical_travel_time_hours: 6.5
+    changes: 3
+    transit_mode: "train+bus"
+    transit_operators:
+      - "Trenitalia Intercity / Frecciabianca"
+      - "Autolinee Toscane (Lines 41P / 11P / 17P)"
+    transfer_hubs:
+      - "Albinia / Orbetello-Monte Argentario"
+      - "Manciano"
+    last_mile_bus_required: true
+    last_mile_bus_notes: "Autolinee Toscane bus from Albinia/Orbetello station to Manciano (~50 min), then connecting bus to Saturnia / Cascate del Mulino (~25 min). NOTE: Sunday bus service is extremely sparse (2 runs/day). Pre-booking a local taxi from Albinia/Grosseto is often recommended for weekend stays."
+    minimum_child_age_spa: 0
+    friday_departure_notes: "Direct Intercity SML to Albinia or Orbetello (~3h 25m), then Friday afternoon bus connections via Manciano to Saturnia."
+    sunday_return_notes: "Sunday connection requires taking morning/early afternoon bus or taxi to Albinia station to catch northbound train to SML."
+    source_citation: "Autolinee Toscane Linee 41P/17P Timetable + Trenitalia Timetable"
+    notes: "Cascate del Mulino natural thermal waterfalls (free open-air sulfur travertine pools, 37.5°C) and luxury Terme di Saturnia Resort. Great bucket-list spot, but transit requires careful scheduling on Sundays."
+
+  - id: "san-casciano-dei-bagni"
+    name: "San Casciano dei Bagni (Fonteverde)"
+    region: "Toscana"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Chiusi-Chianciano Terme"
+    latitude: 42.8711
+    longitude: 11.8764
+    fastest_travel_time_hours: 5.2
+    typical_travel_time_hours: 6.0
+    changes: 2
+    transit_mode: "train+bus"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Autolinee Toscane (Line FT1 / T10)"
+    transfer_hubs:
+      - "Chiusi-Chianciano Terme"
+    last_mile_bus_required: true
+    last_mile_bus_notes: "Autolinee Toscane line FT1 departs Chiusi FS station to San Casciano dei Bagni (~50 min). Limited Sunday service."
+    minimum_child_age_spa: 4
+    friday_departure_notes: "Train SML to Chiusi (~3h 45m), then bus FT1 (~50m)."
+    sunday_return_notes: "Sunday bus connects back to Chiusi for northbound train to SML."
+    source_citation: "Autolinee Toscane Linea FT1 Timetable"
+    notes: "Fonteverde 5-star spa resort overlooking Val d'Orcia, recently famous for discovery of ancient Roman sanctuary bronzes. Historic free stone pools at Bagno Grande."
+
+  - id: "venturina-terme"
+    name: "Venturina Terme (Calidario)"
+    region: "Toscana"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Campiglia Marittima"
+    latitude: 43.0256
+    longitude: 10.5986
+    fastest_travel_time_hours: 2.3
+    typical_travel_time_hours: 2.7
+    changes: 1
+    transit_mode: "train+bus"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Autolinee Toscane (Line 001 / 011)"
+    transfer_hubs:
+      - "Campiglia Marittima"
+    last_mile_bus_required: true
+    last_mile_bus_notes: "Campiglia Marittima FS station is only 2.5km from Calidario Terme Etrusche; local bus runs every 20-30 min (~8 min ride)."
+    minimum_child_age_spa: 3
+    friday_departure_notes: "Direct Intercity from SML down Tirrenica line to Campiglia Marittima takes only 2h 05m! Then 10-minute bus/taxi."
+    sunday_return_notes: "Direct Intercity trains from Campiglia Marittima to SML run Sunday evening."
+    source_citation: "Trenitalia Timetable + Autolinee Toscane Timetable"
+    notes: "Calidario Terme Etrusche: ancient natural thermal spring lake (36°C) where water flows continuously from the ground into a 3,000 sqm lake. Extremely fast from SML (<2.5h door-to-door)."
+
+  # ============================================================================
+  # TOSCANA - SEASIDE & COASTAL
+  # ============================================================================
+  - id: "viareggio"
+    name: "Viareggio (Versilia)"
+    region: "Toscana"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "sea"
+    category: "seaside"
+    primary_station: "Viareggio"
+    latitude: 43.8667
+    longitude: 10.2500
+    fastest_travel_time_hours: 1.2
+    typical_travel_time_hours: 1.4
+    changes: 0
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciabianca"
+      - "Trenitalia Regionale"
+    transfer_hubs: []
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct Intercity or Frecciabianca trains from SML take only 1h 10m - 1h 20m without transfers."
+    sunday_return_notes: "Direct trains every 30-60 min back to SML until late."
+    source_citation: "Trenitalia Timetable"
+    notes: "Versilia Art Nouveau promenade (Passeggiata), wide sandy beaches with family beach clubs, pine forest park (Pineta di Ponente)."
+
+  - id: "forte-dei-marmi"
+    name: "Forte dei Marmi"
+    region: "Toscana"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "sea"
+    category: "seaside"
+    primary_station: "Forte dei Marmi-Seravezza-Querceta"
+    latitude: 43.9631
+    longitude: 10.1747
+    fastest_travel_time_hours: 1.1
+    typical_travel_time_hours: 1.3
+    changes: 0
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Regionale"
+    transfer_hubs: []
+    last_mile_bus_required: false
+    last_mile_bus_notes: "Station is ~2.5km from pier; connecting Autolinee Toscane bus line E35 runs every 20-30 min to Forte beach (~10 min)."
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct Intercity trains from SML take ~1h 05m."
+    sunday_return_notes: "Direct trains back to SML on Sunday evening."
+    source_citation: "Trenitalia Timetable"
+    notes: "Chic seaside resort: pier (Pontile), fine sand, bicycle paths under pine trees, Apuan Alps backdrop."
+
+  - id: "castiglione-della-pescaia"
+    name: "Castiglione della Pescaia"
+    region: "Toscana"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "sea"
+    category: "seaside"
+    primary_station: "Grosseto"
+    latitude: 42.7644
+    longitude: 10.8808
+    fastest_travel_time_hours: 3.6
+    typical_travel_time_hours: 4.1
+    changes: 1
+    transit_mode: "train+bus"
+    transit_operators:
+      - "Trenitalia Intercity / Frecciabianca"
+      - "Autolinee Toscane (Line 1/G)"
+    transfer_hubs:
+      - "Grosseto"
+    last_mile_bus_required: true
+    last_mile_bus_notes: "Autolinee Toscane line 1/G departs Grosseto FS station every 30-60 min directly to Castiglione della Pescaia (~25-30 min)."
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct Intercity SML to Grosseto takes 2h 45m, then 25-minute bus 1/G."
+    sunday_return_notes: "Frequent bus 1/G to Grosseto station connecting to direct IC to SML."
+    source_citation: "Autolinee Toscane Linea 1/G Timetable + Trenitalia Timetable"
+    notes: "Top-rated blue flag sandy beaches in the Maremma, medieval Aragonese castle perched above harbor, Diaccia Botrona nature reserve."
+
+  # ============================================================================
+  # TOSCANA - ART CITIES & HILL TOWNS
+  # ============================================================================
+  - id: "pisa"
+    name: "Pisa"
+    region: "Toscana"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "city"
+    category: "art_city"
+    primary_station: "Pisa Centrale"
+    latitude: 43.7167
+    longitude: 10.4000
+    fastest_travel_time_hours: 1.5
+    typical_travel_time_hours: 1.7
+    changes: 0
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciabianca"
+      - "Trenitalia Regionale"
+    transfer_hubs: []
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct Intercity or Frecciabianca trains take 1h 35m - 1h 45m without any changes."
+    sunday_return_notes: "Direct trains every 30-45 min back to SML."
+    source_citation: "Trenitalia Timetable"
+    notes: "Piazza dei Miracoli (Leaning Tower, Duomo, Battistero), Borgo Stretto, riverside lungarni."
+
+  - id: "lucca"
+    name: "Lucca"
+    region: "Toscana"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "city"
+    category: "art_city"
+    primary_station: "Lucca"
+    latitude: 43.8428
+    longitude: 10.5028
+    fastest_travel_time_hours: 1.7
+    typical_travel_time_hours: 2.0
+    changes: 1
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Regionale"
+    transfer_hubs:
+      - "Viareggio"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct Intercity SML to Viareggio (~1h 15m), then 18-minute regional train to Lucca. Highly reliable."
+    sunday_return_notes: "Frequent regional trains back to Viareggio, connecting to SML."
+    source_citation: "Trenitalia Timetable"
+    notes: "Complete intact Renaissance city walls that you can bike around (rent quad-bikes for family), Piazza dell'Anfiteatro, Guinigi Tower with rooftop oak trees."
+
+  - id: "firenze"
+    name: "Firenze"
+    region: "Toscana"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "city"
+    category: "art_city"
+    primary_station: "Firenze Santa Maria Novella"
+    latitude: 43.7764
+    longitude: 11.2486
+    fastest_travel_time_hours: 2.4
+    typical_travel_time_hours: 2.8
+    changes: 1
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciabianca"
+      - "Trenitalia Regionale Veloce"
+    transfer_hubs:
+      - "Pisa Centrale"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct train SML to Pisa (~1h 40m), then Regionale Veloce Pisa-Firenze SMN (~50m); or direct Frecciabianca. Total ~2h 30m - 2h 45m."
+    sunday_return_notes: "Trains from Firenze SMN to Pisa run every 15-20 min, connecting with northbound trains to SML."
+    source_citation: "Trenitalia Timetable"
+    notes: "Cradle of Renaissance: Duomo, Uffizi, Ponte Vecchio, Boboli Gardens, Accademia Gallery."
+
+  - id: "siena"
+    name: "Siena"
+    region: "Toscana"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "city"
+    category: "art_city"
+    primary_station: "Siena"
+    latitude: 43.3283
+    longitude: 11.3253
+    fastest_travel_time_hours: 3.6
+    typical_travel_time_hours: 4.1
+    changes: 2
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Regionale"
+    transfer_hubs:
+      - "Pisa Centrale"
+      - "Empoli"
+    last_mile_bus_required: false
+    last_mile_bus_notes: "Station is connected to upper historic center via indoor escalators through Porta Camollia mall."
+    minimum_child_age_spa: null
+    friday_departure_notes: "Train SML to Pisa (~1h 40m), Pisa to Empoli (~30m), Empoli to Siena (~50m)."
+    sunday_return_notes: "Regular regional trains to Empoli and Pisa connecting to SML."
+    source_citation: "Trenitalia Timetable"
+    notes: "Piazza del Campo, Duomo di Siena, Torre del Mangia, medieval contrade atmosphere."
+
+  - id: "arezzo"
+    name: "Arezzo"
+    region: "Toscana"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "city"
+    category: "art_city"
+    primary_station: "Arezzo"
+    latitude: 43.4667
+    longitude: 11.8833
+    fastest_travel_time_hours: 3.6
+    typical_travel_time_hours: 4.1
+    changes: 2
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Regionale Veloce"
+    transfer_hubs:
+      - "Pisa Centrale / Firenze SMN"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Train SML to Firenze SMN (~2h 45m), then direct Regionale Veloce to Arezzo (~45m)."
+    sunday_return_notes: "Frequent trains all Sunday evening back to Firenze, Pisa, and SML."
+    source_citation: "Trenitalia Timetable"
+    notes: "Piazza Grande (setting of 'Life is Beautiful'), Piero della Francesca frescoes in Basilica of San Francesco, antique fair."
+
+  - id: "san-gimignano"
+    name: "San Gimignano"
+    region: "Toscana"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "countryside"
+    category: "countryside"
+    primary_station: "Poggibonsi-San Gimignano"
+    latitude: 43.4678
+    longitude: 11.0433
+    fastest_travel_time_hours: 3.7
+    typical_travel_time_hours: 4.2
+    changes: 3
+    transit_mode: "train+bus"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Regionale"
+      - "Autolinee Toscane (Line 130)"
+    transfer_hubs:
+      - "Pisa Centrale"
+      - "Empoli"
+      - "Poggibonsi-San Gimignano"
+    last_mile_bus_required: true
+    last_mile_bus_notes: "Autolinee Toscane line 130 departs Poggibonsi station square directly to San Gimignano Piazzale Martiri (~20 min, runs every 30-60 min)."
+    minimum_child_age_spa: null
+    friday_departure_notes: "Train SML to Pisa and Empoli, regional train to Poggibonsi, bus 130 up to the hilltop village."
+    sunday_return_notes: "Bus 130 operates on Sundays connecting to trains at Poggibonsi."
+    source_citation: "Autolinee Toscane Linea 130 Timetable"
+    notes: "'Manhattan of the Middle Ages': iconic fourteen medieval stone towers, Gelateria Dondoli (world champion gelato - huge hit for the kids), Vernaccia wine hills."
+
+  # ============================================================================
+  # VENETO - TERME & SPA
+  # ============================================================================
+  - id: "abano-terme"
+    name: "Abano Terme"
+    region: "Veneto"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Terme Euganee-Abano-Montegrotto"
+    latitude: 45.3614
+    longitude: 11.7892
+    fastest_travel_time_hours: 4.6
+    typical_travel_time_hours: 5.1
+    changes: 2
+    transit_mode: "train+bus"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciarossa"
+      - "Busitalia Veneto (Lines A / AT / M)"
+    transfer_hubs:
+      - "Milano Centrale"
+      - "Padova / Terme Euganee"
+    last_mile_bus_required: true
+    last_mile_bus_notes: "Busitalia lines A, AT, or M depart Padova train station square every 15-20 min directly to Abano Terme center (~20 min). Alternatively, take regional train to Terme Euganee station (10m) + 5 min bus."
+    minimum_child_age_spa: 3
+    friday_departure_notes: "Direct Intercity SML to Milano Centrale (~2h 15m), Frecciarossa Milano to Padova (~2h 00m), Busitalia bus A/AT to Abano (~20m). Total ~4h 45m."
+    sunday_return_notes: "Bus runs every 20 min back to Padova FS station; frequent Frecciarossa to Milano Centrale and direct IC to SML."
+    source_citation: "Busitalia Veneto Timetable + Trenitalia Timetable"
+    notes: "Europe's oldest and largest thermal basin: Bacino Termale Euganeo. Over 70 hotel spa establishments with natural hyperthermal water (87°C source), mature thermal mud treatments, lush Euganean Hills backdrop."
+
+  - id: "montegrotto-terme"
+    name: "Montegrotto Terme"
+    region: "Veneto"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Terme Euganee-Abano-Montegrotto"
+    latitude: 45.3308
+    longitude: 11.7917
+    fastest_travel_time_hours: 4.6
+    typical_travel_time_hours: 5.0
+    changes: 2
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciarossa"
+      - "Trenitalia Regionale"
+    transfer_hubs:
+      - "Milano Centrale"
+      - "Padova"
+    last_mile_bus_required: false
+    last_mile_bus_notes: "Station 'Terme Euganee-Abano-Montegrotto' is located right in the center of Montegrotto; hotel thermal spas are within walking distance."
+    minimum_child_age_spa: 3
+    friday_departure_notes: "Train SML to Milano Centrale (~2h 15m), Frecciarossa to Padova (~2h), connecting Regionale to Terme Euganee (only 8-10 min). 100% train!"
+    sunday_return_notes: "Frequent regional trains from Terme Euganee to Padova connecting to high-speed trains to Milano and IC to SML."
+    source_citation: "Trenitalia Timetable"
+    notes: "Roman thermal archaeology area, Butterfly Arc (House of Butterflies - great for 7yo), Y-40 The Deep Joy (deepest thermal diving pool in the world), thermal hotel parks."
+
+  - id: "recoaro-terme"
+    name: "Recoaro Terme"
+    region: "Veneto"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Vicenza"
+    latitude: 45.7042
+    longitude: 11.2269
+    fastest_travel_time_hours: 5.5
+    typical_travel_time_hours: 6.2
+    changes: 2
+    transit_mode: "train+bus"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciarossa"
+      - "SVT Vicenza (Line 1)"
+    transfer_hubs:
+      - "Milano Centrale"
+      - "Vicenza"
+    last_mile_bus_required: true
+    last_mile_bus_notes: "SVT line 1 departs Vicenza Autostazione (outside FS station) to Recoaro Terme (~1 hour)."
+    minimum_child_age_spa: 4
+    friday_departure_notes: "Train SML to Milano (~2h 15m), Frecciarossa to Vicenza (~1h 40m), SVT bus to Recoaro (~1h)."
+    sunday_return_notes: "SVT bus connects to Vicenza station on Sundays."
+    source_citation: "SVT Vicenza Linea 1 Timetable"
+    notes: "Historic 'Fonti Centrali' spa resort nestled in the Piccole Dolomiti (Little Dolomites). Famous Lelia ferruginous mineral waters."
+
+  # ============================================================================
+  # VENETO - ART CITIES & LAKE
+  # ============================================================================
+  - id: "verona"
+    name: "Verona"
+    region: "Veneto"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "city"
+    category: "art_city"
+    primary_station: "Verona Porta Nuova"
+    latitude: 45.4384
+    longitude: 10.9916
+    fastest_travel_time_hours: 3.5
+    typical_travel_time_hours: 3.9
+    changes: 1
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciarossa / Italo"
+    transfer_hubs:
+      - "Milano Centrale"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct Intercity SML to Milano Centrale (~2h 15m), then Frecciarossa to Verona Porta Nuova (~1h 13m). Very smooth 1-change connection."
+    sunday_return_notes: "High-speed trains depart Verona to Milano Centrale every 20-30 min, connecting with IC to SML."
+    source_citation: "Trenitalia Timetable"
+    notes: "Arena di Verona, Piazza delle Erbe, Castelvecchio Bridge, Juliet's House, easy access to Lake Garda."
+
+  - id: "peschiera-del-garda"
+    name: "Peschiera del Garda"
+    region: "Veneto"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "lake"
+    category: "lake"
+    primary_station: "Peschiera del Garda"
+    latitude: 45.4419
+    longitude: 10.6961
+    fastest_travel_time_hours: 3.6
+    typical_travel_time_hours: 4.0
+    changes: 1
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciarossa / Regionale Veloce"
+    transfer_hubs:
+      - "Milano Centrale"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct Intercity SML to Milano Centrale (~2h 15m), Frecciarossa to Peschiera (~1h 00m)."
+    sunday_return_notes: "Frequent trains all Sunday evening back to Milano Centrale."
+    source_citation: "Trenitalia Timetable"
+    notes: "UNESCO fortress town surrounded by water at the outflow of the Mincio river. Free shuttle buses from station to Gardaland theme park (huge for the kids)."
+
+  - id: "vicenza"
+    name: "Vicenza"
+    region: "Veneto"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "city"
+    category: "art_city"
+    primary_station: "Vicenza"
+    latitude: 45.5455
+    longitude: 11.5353
+    fastest_travel_time_hours: 4.0
+    typical_travel_time_hours: 4.4
+    changes: 1
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciarossa / Italo"
+    transfer_hubs:
+      - "Milano Centrale"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct Intercity SML to Milano Centrale (~2h 15m), Frecciarossa to Vicenza (~1h 40m)."
+    sunday_return_notes: "High-speed trains to Milano Centrale run every 30 min."
+    source_citation: "Trenitalia Timetable"
+    notes: "UNESCO Palladian city: Basilica Palladiana, Teatro Olimpico (oldest enclosed Renaissance theatre), Villa La Rotonda."
+
+  - id: "padova"
+    name: "Padova"
+    region: "Veneto"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "city"
+    category: "art_city"
+    primary_station: "Padova"
+    latitude: 45.4064
+    longitude: 11.8768
+    fastest_travel_time_hours: 4.3
+    typical_travel_time_hours: 4.7
+    changes: 1
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciarossa / Italo"
+    transfer_hubs:
+      - "Milano Centrale"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct Intercity SML to Milano Centrale (~2h 15m), Frecciarossa to Padova (~2h 00m)."
+    sunday_return_notes: "High-speed trains back to Milano Centrale every 20-30 min."
+    source_citation: "Trenitalia Timetable"
+    notes: "Scrovegni Chapel (Giotto's frescoes), Prato della Valle (huge elliptical square), Basilica of Saint Anthony, historic botanical garden."
+
+  - id: "venezia"
+    name: "Venezia"
+    region: "Veneto"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "city"
+    category: "art_city"
+    primary_station: "Venezia Santa Lucia"
+    latitude: 45.4408
+    longitude: 12.3155
+    fastest_travel_time_hours: 4.7
+    typical_travel_time_hours: 5.2
+    changes: 1
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciarossa / Italo"
+    transfer_hubs:
+      - "Milano Centrale"
+    last_mile_bus_required: false
+    last_mile_bus_notes: "Venezia Santa Lucia train station opens directly onto the Grand Canal with ACTV Vaporetto waterbuses outside."
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct Intercity SML to Milano Centrale (~2h 15m), Frecciarossa to Venezia Santa Lucia (~2h 25m). Total under 5 hours door-to-door!"
+    sunday_return_notes: "Depart Venezia Santa Lucia by 17:30 on Sunday via Milano Centrale to reach SML comfortably."
+    source_citation: "Trenitalia Timetable"
+    notes: "Canal city: Piazza San Marco, Doge's Palace, Rialto Bridge, Grand Canal vaporetti, glassmaking island of Murano."
+
+  - id: "treviso"
+    name: "Treviso"
+    region: "Veneto"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "city"
+    category: "art_city"
+    primary_station: "Treviso Centrale"
+    latitude: 45.6667
+    longitude: 12.2458
+    fastest_travel_time_hours: 5.1
+    typical_travel_time_hours: 5.7
+    changes: 2
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciarossa"
+      - "Trenitalia Regionale"
+    transfer_hubs:
+      - "Milano Centrale"
+      - "Venezia Mestre"
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Train SML to Milano (~2h 15m), Frecciarossa to Venezia Mestre (~2h 10m), Regionale to Treviso (~20m)."
+    sunday_return_notes: "Frequent trains to Mestre connecting with Frecciarossa to Milano and IC to SML."
+    source_citation: "Trenitalia Timetable"
+    notes: "'Little Venice': picturesque canals, Sile river natural park, Piazza dei Signori, birthplace of Tiramisù, gateway to prosecco hills."
+
+  # ============================================================================
+  # UMBRIA - ART CITIES & HILL TOWNS
+  # ============================================================================
+  - id: "orvieto"
+    name: "Orvieto"
+    region: "Umbria"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "city"
+    category: "art_city"
+    primary_station: "Orvieto"
+    latitude: 42.7167
+    longitude: 12.1167
+    fastest_travel_time_hours: 4.1
+    typical_travel_time_hours: 4.6
+    changes: 1
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+    transfer_hubs:
+      - "Pisa Centrale / Firenze SMN"
+    last_mile_bus_required: false
+    last_mile_bus_notes: "Station is at the base of the tufa cliff; convenient funicular railway (Funicolare di Orvieto) departs every 10 min directly from station square to Piazza Cahen at the town top."
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct Intercity trains (Tirrenica/Roma line or via Firenze) connect to Orvieto in ~4h 15m."
+    sunday_return_notes: "Direct or 1-change Intercity/Regionale Veloce back towards Firenze/Pisa and SML."
+    source_citation: "Trenitalia Timetable"
+    notes: "Stunning tufa cliff city: magnificent Gothic Duomo, Pozzo di San Patrizio (St. Patrick's Well double-helix staircase - thrilling for children), underground caves."
+
+  - id: "perugia"
+    name: "Perugia"
+    region: "Umbria"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "city"
+    category: "art_city"
+    primary_station: "Perugia"
+    latitude: 43.1107
+    longitude: 12.3908
+    fastest_travel_time_hours: 5.0
+    typical_travel_time_hours: 5.6
+    changes: 2
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Regionale Veloce"
+    transfer_hubs:
+      - "Pisa Centrale"
+      - "Firenze Santa Maria Novella"
+    last_mile_bus_required: false
+    last_mile_bus_notes: "Station Perugia Fontivegge is connected directly to the historic hilltop center by the futuristic MiniMetrò automated people mover."
+    minimum_child_age_spa: null
+    friday_departure_notes: "Train SML to Firenze SMN (~2h 45m), then direct Regionale Veloce Firenze-Perugia (~2h 05m). Total ~5 hours."
+    sunday_return_notes: "Direct Regionale Veloce to Firenze SMN, connecting to Pisa/SML."
+    source_citation: "Trenitalia Timetable (Firenze - Terontola - Foligno line)"
+    notes: "Umbrian capital: Rocca Paolina underground fortress, Palazzo dei Priori, Fontana Maggiore, Perugina chocolate factory (Baci museum)."
+
+  - id: "assisi"
+    name: "Assisi"
+    region: "Umbria"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "city"
+    category: "art_city"
+    primary_station: "Assisi"
+    latitude: 43.0707
+    longitude: 12.6169
+    fastest_travel_time_hours: 5.3
+    typical_travel_time_hours: 5.9
+    changes: 2
+    transit_mode: "train+bus"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Regionale Veloce"
+      - "Busitalia Umbria (Line C)"
+    transfer_hubs:
+      - "Firenze Santa Maria Novella"
+      - "Assisi FS"
+    last_mile_bus_required: true
+    last_mile_bus_notes: "Busitalia line C departs outside Assisi station every 20-30 min to Piazza Matteotti / Upper Basilica (~10 min)."
+    minimum_child_age_spa: null
+    friday_departure_notes: "Train SML to Firenze SMN (~2h 45m), direct Regionale Veloce to Assisi (~2h 25m), short bus up to historical center."
+    sunday_return_notes: "Regular Sunday trains back to Firenze SMN connecting to SML."
+    source_citation: "Busitalia Umbria Linea C Timetable + Trenitalia Timetable"
+    notes: "UNESCO World Heritage site: Basilica of San Francesco with Giotto frescoes, Temple of Minerva, Rocca Maggiore castle."
+
+  - id: "spoleto"
+    name: "Spoleto"
+    region: "Umbria"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "city"
+    category: "art_city"
+    primary_station: "Spoleto"
+    latitude: 42.7333
+    longitude: 12.7333
+    fastest_travel_time_hours: 5.8
+    typical_travel_time_hours: 6.4
+    changes: 2
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Regionale Veloce"
+    transfer_hubs:
+      - "Firenze Santa Maria Novella / Roma Termini"
+    last_mile_bus_required: false
+    last_mile_bus_notes: "Mechanized escalators and moving walkways (Percorsi Meccanizzati) connect the station area directly up to Rocca Albornoziana."
+    minimum_child_age_spa: null
+    friday_departure_notes: "Train SML to Firenze SMN (~2h 45m), then direct train to Spoleto (~2h 55m)."
+    sunday_return_notes: "Trains back to Firenze SMN or Roma connecting to SML."
+    source_citation: "Trenitalia Timetable"
+    notes: "Rocca Albornoziana castle, magnificent Ponte delle Torri aqueduct bridge, Festival dei Due Mondi culture, Roman theatre."
+
+  # ============================================================================
+  # LAZIO - TERME & ART CITIES
+  # ============================================================================
+  - id: "viterbo-terme"
+    name: "Viterbo (Terme dei Papi)"
+    region: "Lazio"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Viterbo Porta Romana"
+    latitude: 42.4167
+    longitude: 12.1000
+    fastest_travel_time_hours: 5.6
+    typical_travel_time_hours: 6.4
+    changes: 2
+    transit_mode: "train+bus"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Regionale (FL3 line)"
+      - "Francigena Viterbo (Line 2)"
+    transfer_hubs:
+      - "Roma Ostiense / Roma Tiburtina"
+      - "Viterbo"
+    last_mile_bus_required: true
+    last_mile_bus_notes: "Francigena city bus line 2 or dedicated Terme dei Papi shuttle connects Viterbo railway station to Terme dei Papi thermal pool (~10-15 min)."
+    minimum_child_age_spa: 2
+    friday_departure_notes: "Train SML down Tirrenica to Roma Ostiense/Tiburtina (~4h 15m), FL3 regional train to Viterbo (~1h 15m), shuttle to spa."
+    sunday_return_notes: "Regular trains to Rome or Orte connecting to northbound Intercity back to SML."
+    source_citation: "Trenitalia FL3 Timetable + Francigena Viterbo Timetable"
+    notes: "Historic Papal thermal pool: monumental 2,000 sqm thermal swimming pool fed by the Bullicame hyperthermal spring (58°C), open year-round. Papal Palace and San Pellegrino medieval quarter."
+
+  - id: "tivoli-terme"
+    name: "Tivoli Terme (Acque Albule)"
+    region: "Lazio"
+    is_terme: true
+    has_thermal_baths: true
+    primary_attraction: "terme"
+    category: "terme"
+    primary_station: "Bagni di Tivoli"
+    latitude: 41.9514
+    longitude: 12.7167
+    fastest_travel_time_hours: 5.2
+    typical_travel_time_hours: 5.8
+    changes: 2
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Regionale (FL2 line)"
+    transfer_hubs:
+      - "Roma Termini / Roma Tiburtina"
+    last_mile_bus_required: false
+    last_mile_bus_notes: "Bagni di Tivoli railway station is 250m walking distance from Le Terme di Roma (Acque Albule) thermal wellness center."
+    minimum_child_age_spa: 0
+    friday_departure_notes: "Direct Intercity SML to Roma Tiburtina (~4h 25m), then FL2 regional train to Bagni di Tivoli (~25m). 100% train!"
+    sunday_return_notes: "FL2 trains to Roma Tiburtina every 30-60 min connecting to northbound IC/Frecciabianca to SML."
+    source_citation: "Trenitalia FL2 Timetable"
+    notes: "Historic sulfur thermal bath park (Le Terme di Roma Acque Albule): four large outdoor swimming pools with children's pools. Short hop from Tivoli UNESCO villas."
+
+  - id: "roma"
+    name: "Roma"
+    region: "Lazio"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "city"
+    category: "art_city"
+    primary_station: "Roma Termini"
+    latitude: 41.9028
+    longitude: 12.4964
+    fastest_travel_time_hours: 4.2
+    typical_travel_time_hours: 4.7
+    changes: 0
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Frecciabianca"
+    transfer_hubs: []
+    last_mile_bus_required: false
+    last_mile_bus_notes: null
+    minimum_child_age_spa: null
+    friday_departure_notes: "Direct Intercity / Frecciabianca trains run along the Tirrenica coast from SML straight into Roma Ostiense / Roma Termini in ~4h 20m - 4h 45m without any transfers! Alternatively via Firenze SMN on Frecciarossa in ~4h 15m."
+    sunday_return_notes: "Direct Intercity / Frecciabianca trains depart Roma Termini/Ostiense on Sunday late afternoon directly to SML."
+    source_citation: "Trenitalia Timetable (Genova - Roma Tirrenica line)"
+    notes: "Italy's capital: Colosseum, Vatican, Trevi Fountain, Pantheon, Villa Borghese, Roman Forum. Incredibly easy direct rail journey from SML."
+
+  - id: "tivoli"
+    name: "Tivoli (Villas)"
+    region: "Lazio"
+    is_terme: false
+    has_thermal_baths: false
+    primary_attraction: "city"
+    category: "art_city"
+    primary_station: "Tivoli"
+    latitude: 41.9619
+    longitude: 12.8000
+    fastest_travel_time_hours: 5.4
+    typical_travel_time_hours: 6.0
+    changes: 2
+    transit_mode: "train"
+    transit_operators:
+      - "Trenitalia Intercity"
+      - "Trenitalia Regionale (FL2 line)"
+    transfer_hubs:
+      - "Roma Tiburtina"
+    last_mile_bus_required: false
+    last_mile_bus_notes: "Tivoli station is a 10-minute walk across the bridge to Villa d'Este and historic center; local bus connects to Villa Adriana."
+    minimum_child_age_spa: null
+    friday_departure_notes: "Train SML to Roma Tiburtina (~4h 25m), then FL2 regional train to Tivoli (~45m)."
+    sunday_return_notes: "FL2 trains to Roma Tiburtina connecting with northbound IC to SML."
+    source_citation: "Trenitalia Timetable"
+    notes: "UNESCO World Heritage gems: Villa d'Este (fabulous renaissance fountains and water organ that fascinate kids), Villa Adriana (Emperor Hadrian's vast residence), Villa Gregoriana waterfalls."
