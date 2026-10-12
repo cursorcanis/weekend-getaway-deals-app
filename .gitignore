@@ -13,6 +13,7 @@ venv/
 
 # Runtime data
 data/*.db
+data/cache/
 data/*.db-*
 *.log
 

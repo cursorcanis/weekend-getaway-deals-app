@@ -98,8 +98,15 @@ async def test_serpapi_source_offline_normalization(
         # 3 stars -> €2.00/person/night * 3 persons (2A + 15yo, 7yo free) * 2 nights = €12.00
         assert deal1.price.estimated_tourist_tax_eur == 12.00
         assert deal1.room_offer.board == BoardType.BREAKFAST
-        assert deal1.room_offer.terme_included is True
+        assert deal1.room_offer.has_spa_amenity is True
+        # Google Hotels' list view doesn't say whether spa entry is in the rate
+        assert deal1.room_offer.terme_included is None
         assert deal1.room_offer.terme_child_policy_compliant is True
+        # Room details are unknown, not invented
+        assert deal1.room_offer.max_guests is None
+        assert deal1.room_offer.room_count is None
+        # "15% less than usual" -> usual price 320 / 0.85
+        assert deal1.price.discount_percent == 15.0
 
         # Deal 2: Grand Hotel Terme Trieste & Victoria (5-star)
         deal2 = deals[1]

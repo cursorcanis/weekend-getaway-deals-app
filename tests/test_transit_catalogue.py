@@ -137,8 +137,9 @@ def test_reachability_queries():
     """Verify reachability helper methods."""
     assert is_reachable("acqui-terme", max_hours=7.0) is True
     assert is_reachable("monterosso-al-mare", max_hours=1.0) is True
-    assert is_reachable("merano", max_hours=6.0) is False  # fastest ~6.8h
-    assert is_reachable("merano", max_hours=7.0) is True
+    # Reachability uses the typical journey time (Merano: fastest 6.8h, typical 7.5h)
+    assert is_reachable("merano", max_hours=7.0) is False
+    assert is_reachable("merano", max_hours=8.0) is True
     assert is_reachable("non-existent-place", max_hours=10.0) is False
 
     t = get_travel_time("acqui-terme")

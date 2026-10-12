@@ -1,7 +1,7 @@
 """Core domain models for Weekend Getaway Deals."""
 
 from __future__ import annotations
-from datetime import date, datetime
+from datetime import date, datetime, timezone
 from enum import Enum
 from typing import List, Optional
 from pydantic import BaseModel, Field, HttpUrl, PositiveInt, NonNegativeFloat, model_validator
@@ -117,11 +117,13 @@ class StayRequest(BaseModel):
 
 
 class RoomOffer(BaseModel):
-    name: str = Field(description="Room title, e.g. 'Family Suite' or '2 x Superior Double'")
-    room_count: PositiveInt = Field(default=1, description="Number of rooms booked to fit party")
-    max_guests: PositiveInt = Field(description="Total capacity of the room allocation")
+    # None means the source did not say. Never fill these in with assumptions.
+    name: Optional[str] = Field(default=None, description="Room title, e.g. 'Family Suite' or '2 x Superior Double'")
+    room_count: Optional[PositiveInt] = Field(default=None, description="Number of rooms booked to fit party")
+    max_guests: Optional[PositiveInt] = Field(default=None, description="Total capacity of the room allocation")
     board: BoardType = Field(default=BoardType.ROOM_ONLY)
-    terme_included: bool = Field(default=False, description="Thermal spa access included in rate")
+    has_spa_amenity: bool = Field(default=False, description="Property lists a spa/thermal/wellness amenity")
+    terme_included: Optional[bool] = Field(default=None, description="Thermal spa access included in rate, if the source says so")
     terme_child_policy_compliant: bool = Field(
         default=True,
         description="False if the 7yo is excluded from spa facilities"
@@ -161,6 +163,6 @@ class Deal(BaseModel):
     stay_request: StayRequest
     room_offer: RoomOffer
     price: PriceBreakdown
-    booking_url: HttpUrl
+    booking_url: Optional[HttpUrl] = None
     score: NonNegativeFloat = Field(default=0.0, description="Computed rank score")
-    scraped_at: datetime = Field(default_factory=datetime.utcnow)
+    scraped_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))

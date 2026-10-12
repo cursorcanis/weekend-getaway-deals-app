@@ -79,13 +79,15 @@ class DirectTermeScraperSource(BaseDealSource):
         if not destination.has_thermal_baths:
             return []
 
-        # Enforce spa admission check for the 7-year-old
+        # Enforce spa admission check for the youngest child in the party
         is_compliant = True
-        if destination.minimum_child_age_spa and destination.minimum_child_age_spa > 7:
+        youngest = min(stay.party.children_ages, default=99)
+        if destination.minimum_child_age_spa and destination.minimum_child_age_spa > youngest:
             logger.info(
-                "Destination %s thermal baths require age %s+; family 7yo is barred.",
+                "Destination %s thermal baths require age %s+; youngest child (%s) is barred.",
                 destination.name,
                 destination.minimum_child_age_spa,
+                youngest,
             )
             is_compliant = False
 

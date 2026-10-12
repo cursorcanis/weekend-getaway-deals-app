@@ -7,10 +7,16 @@ against data/destinations.yaml.
 
 from __future__ import annotations
 
-import functools
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 import yaml
+
+from src.core.models import (
+    Destination,
+    DestinationCategory,
+    TransitMode,
+    TransitRoute,
+)
 
 
 DEFAULT_CATALOGUE_PATH = Path(__file__).resolve().parent.parent / "data" / "destinations.yaml"
@@ -53,7 +59,6 @@ class StaticCatalogue:
         """Retrieve destination details by unique slug id."""
         return self._destinations_by_id.get(destination_id)
 
-    @functools.lru_cache(maxsize=256)
     def get_travel_time(self, destination_id: str, use_fastest: bool = False) -> Optional[float]:
         """Get cached typical (or fastest) travel time in hours from Santa Margherita Ligure."""
         dest = self.get(destination_id)
@@ -63,8 +68,9 @@ class StaticCatalogue:
         return float(dest.get(key, 0.0))
 
     def is_reachable(self, destination_id: str, max_hours: float = 7.0) -> bool:
-        """Check whether destination is reachable within the configured travel time limit."""
-        t = self.get_travel_time(destination_id, use_fastest=True)
+        """Check whether destination is reachable within the limit, using the
+        typical (not best-case) journey time so a lucky connection doesn't count."""
+        t = self.get_travel_time(destination_id)
         if t is None:
             return False
         return t <= max_hours
@@ -89,12 +95,45 @@ class StaticCatalogue:
             if last_mile_bus_required is not None and dest.get("last_mile_bus_required") != last_mile_bus_required:
                 continue
             if max_hours is not None:
-                typical = float(dest.get("typical_travel_time_hours", 999.0))
-                fastest = float(dest.get("fastest_travel_time_hours", 999.0))
-                if min(typical, fastest) > max_hours:
+                if float(dest.get("typical_travel_time_hours", 999.0)) > max_hours:
                     continue
             results.append(dest)
         return results
+
+    def to_destination(self, dest: Dict[str, Any]) -> Destination:
+        """Convert a catalogue entry into the Destination domain model."""
+        mode = {
+            "train": TransitMode.TRAIN,
+            "bus": TransitMode.BUS,
+            "train+bus": TransitMode.TRAIN_PLUS_BUS,
+        }.get(dest.get("transit_mode", "train"), TransitMode.TRAIN)
+        route = TransitRoute(
+            origin=self._origin_info.get("station_name", "Santa Margherita Ligure-Portofino"),
+            destination_name=dest["name"],
+            destination_station=dest.get("primary_station", dest["name"]),
+            total_duration_minutes=round(float(dest["typical_travel_time_hours"]) * 60),
+            transfers=int(dest.get("changes", 0)),
+            is_bus_last_mile=bool(dest.get("last_mile_bus_required", False)),
+            bus_frequency_notes=dest.get("last_mile_bus_notes"),
+            estimated=True,
+        )
+        try:
+            category = DestinationCategory(dest.get("category", "art_city"))
+        except ValueError:
+            category = DestinationCategory.ART_CITY
+        return Destination(
+            id=dest["id"],
+            name=dest["name"],
+            region=dest["region"],
+            category=category,
+            primary_station=dest.get("primary_station", dest["name"]),
+            latitude=dest.get("latitude"),
+            longitude=dest.get("longitude"),
+            transit_route=route,
+            has_thermal_baths=bool(dest.get("has_thermal_baths", dest.get("is_terme", False))),
+            minimum_child_age_spa=dest.get("minimum_child_age_spa"),
+            notes=dest.get("notes"),
+        )
 
     def get_summary(self) -> Dict[str, Any]:
         """Generate high-level counts and breakdown by region and category."""

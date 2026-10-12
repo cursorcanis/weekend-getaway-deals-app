@@ -23,6 +23,21 @@ Project-specific subagents live in `.claude/agents/`:
 | `deal-filter-ranker` | Family occupancy, Fri–Sun date rules, price normalization, scoring, dedup |
 | `scheduler-notifier` | Continuous run loop/scheduler, persistence, alert delivery (email/Telegram), deployment |
 | `qa-reviewer` | Tests, fixtures, and review of changes against the hard requirements above |
+| `scraping-compliance-reviewer` | ToS / robots.txt / rate-limit / GDPR check before adding any data source (read-only) |
+| `security-reviewer` | Secrets, dependencies, SSRF/injection review before commits (read-only) |
+| `deal-search-engineer` | Overlaps `deal-sourcing` + `deal-filter-ranker`; prefer those two |
+
+## Running
+
+```
+pip install -r requirements.txt
+python -m src.cli --demo          # offline, recorded sample response
+python -m src.cli --plan          # list the searches a live run would make (no API calls)
+python -m src.cli --terme-only    # live search; needs SERPAPI_API_KEY in .env
+python -m pytest
+```
+
+Live searches cost SerpApi quota: each (destination, weekend) pair is one search, capped by `--max-searches` (default 20) and cached for 12h in `data/cache/`.
 
 ## Conventions
 
