@@ -39,6 +39,29 @@ class Settings(BaseSettings):
     # Tourist tax estimate: children younger than this are assumed exempt
     tourist_tax_exempt_under_age: int = 14
 
+    # Continuous mode (--daemon). Each tick spends up to max_searches_per_run searches,
+    # rotating through the full (destination, weekend) list across ticks.
+    db_path: Path = PROJECT_ROOT / "data" / "deals.db"
+    poll_interval_hours: float = 12.0
+    poll_jitter_minutes: float = 15.0
+
+    # Alerts: only deals scoring at least this, and re-alert only after a drop this large
+    alert_min_score: float = 60.0
+    alert_min_price_drop_eur: float = 30.0
+    alert_max_per_message: int = 10
+
+    # Telegram: alerts are sent when both are set
+    telegram_bot_token: Optional[str] = None
+    telegram_chat_id: Optional[str] = None
+
+    # Email: alerts are sent when SMTP_HOST and ALERT_EMAIL_TO are set (comma-separated list)
+    smtp_host: Optional[str] = None
+    smtp_port: int = 587
+    smtp_user: Optional[str] = None
+    smtp_password: Optional[str] = None
+    alert_email_from: Optional[str] = None
+    alert_email_to: Optional[str] = None
+
 
 def get_settings() -> Settings:
     return Settings()

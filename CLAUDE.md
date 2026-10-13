@@ -34,10 +34,17 @@ pip install -r requirements.txt
 python -m src.cli --demo          # offline, recorded sample response
 python -m src.cli --plan          # list the searches a live run would make (no API calls)
 python -m src.cli --terme-only    # live search; needs SERPAPI_API_KEY in .env
+python -m src.cli --demo --once --dry-run   # offline: full search -> store -> alert cycle
+python -m src.cli --once          # live: store in data/deals.db, alert new/cheaper deals
+python -m src.cli --daemon        # repeat --once every POLL_INTERVAL_HOURS (default 12h)
 python -m pytest
 ```
 
-Live searches cost SerpApi quota: each (destination, weekend) pair is one search, capped by `--max-searches` (default 20) and cached for 12h in `data/cache/`.
+Live searches cost SerpApi quota: each (destination, weekend) pair is one search, capped by `--max-searches` (default 20) and cached for 12h in `data/cache/`. In `--once`/`--daemon` mode successive runs rotate through all pairs, so the cap spreads coverage over time rather than repeating the nearest 20.
+
+Alerts go to Telegram and/or email when configured in `.env` (see `.env.example`), else to the console. A deal is alerted when it scores ≥ `ALERT_MIN_SCORE` and was never alerted, or is ≥ `ALERT_MIN_PRICE_DROP_EUR` cheaper than its last alert. Alerts are only marked sent when at least one channel delivered; `--dry-run` never marks them.
+
+On Windows, prefer Task Scheduler running `python -m src.cli --once` every 12h (working directory = project root) over a long-lived `--daemon`, so runs survive sleep and reboots.
 
 ## Conventions
 
