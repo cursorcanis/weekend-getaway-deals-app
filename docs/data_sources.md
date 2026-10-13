@@ -215,19 +215,19 @@ While SerpApi captures hotels in thermal towns, specific thermal bath complexes 
 #### 4.2.2 Bormio Terme
 * **Evaluation:** **Primary Recommendation for Alpine Thermal Baths.**
 * **Profile:** A family-focused public thermal center with thermal waters at 37°C–40°C, a 60-meter waterslide for older kids, and dedicated 60cm splash pools for younger kids.
-* **Data Ingestion:** Partner hotels in Bormio offer the "Bormio Terme Family Package". Can be monitored via SerpApi (filtering for Bormio hotels with pool/spa) and direct scraper on `bormioterme.it/offerte`.
+* **Data Ingestion:** Partner hotels in Bormio offer the "Bormio Terme Family Package". Can be monitored via SerpApi (filtering for Bormio hotels with pool/spa) `bormioterme.it/offerte` does not exist (404, checked 2026-10-13); promotions are at `/magazine/promozioni/` and are day tickets, not packages. Treat as hand-maintained reference prices. See `docs/compliance_phase5.md`.
 
 #### 4.2.3 Terme di Sirmione (Aquaria Thermal SPA & Terme Hotels)
 * **Evaluation:** **High Recommendation for Lake Garda.**
 * **Profile:** Historical thermal resort operating 4 partner hotels (*Grand Hotel Terme*, *Hotel Sirmione*, *Hotel Fonte Boiola*) and the Aquaria Thermal SPA.
 * **Admission:** Children aged $\ge 2.5$ years old are welcomed in thermal pools. Junior admission rates apply up to age 11.
-* **Data Ingestion:** Direct package monitor for `termedisirmione.com/offerte-soggiorno`.
+* **Data Ingestion:** On hold. `/offerte-soggiorno` was not found; packages live under `/pacchetto-esperienza/<slug>/`, and the site refused automated fetches on 2026-10-13. Cover the hotels via SerpApi until robots.txt/terms are checked by hand. See `docs/compliance_phase5.md`.
 
 #### 4.2.4 Terme di Saturnia Natural Destination
 * **Evaluation:** **High Recommendation for Tuscany.**
 * **Profile:** World-renowned sulfur springs (37.5°C). The resort features a 4-star/5-star hotel and a 20,000 sqm Parco Termale.
 * **Admission:** Parco Termale has dedicated 0.7m shallow pools for children. Deep waterfall zones enforce a 1.50m / 14yo limit. The free natural cascade (*Cascate del Mulino*) is open to all.
-* **Data Ingestion:** Monitored via SerpApi for Saturnia/Manciano hotels and targeted parsing of `termedisaturnia.it/offerte`.
+* **Data Ingestion:** Monitored via SerpApi for Saturnia/Manciano hotels and an offer-change detector on `termedisaturnia.it/resort/offerte/` (titles and validity only; prices are only in the Synxis booking engine, which must not be automated). See `docs/compliance_phase5.md`.
 
 ---
 
