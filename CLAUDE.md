@@ -37,6 +37,7 @@ python -m src.cli --terme-only    # live search; needs SERPAPI_API_KEY in .env
 python -m src.cli --demo --once --dry-run   # offline: full search -> store -> alert cycle
 python -m src.cli --once          # live: store in data/deals.db, alert new/cheaper deals
 python -m src.cli --daemon        # repeat --once every POLL_INTERVAL_HOURS (default 12h)
+python -m src.cli --dashboard     # read-only page of stored deals on http://127.0.0.1:8765/
 python -m pytest
 ```
 

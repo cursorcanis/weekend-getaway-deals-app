@@ -64,6 +64,9 @@ def build_parser() -> argparse.ArgumentParser:
                       help="search once, store results, alert new or cheaper deals")
     mode.add_argument("--daemon", action="store_true",
                       help="keep running: --once every POLL_INTERVAL_HOURS (Ctrl+C to stop)")
+    mode.add_argument("--dashboard", action="store_true",
+                      help="serve a read-only page of stored deals on http://127.0.0.1:PORT/")
+    p.add_argument("--port", type=int, default=8765, help="dashboard port (default 8765)")
     p.add_argument("--offers-unblock", metavar="PAGE_ID",
                    help="resume polling a terme offer page that answered 403/429 "
                         "(check the site by hand first)")
@@ -442,6 +445,10 @@ def main(argv: Optional[List[str]] = None) -> int:
         with DealStore(settings.db_path) as store:
             store.delete_meta(f"offers:{args.offers_unblock}:blocked")
         print(f"Offer page {args.offers_unblock} will be polled again.", file=sys.stderr)
+        return 0
+    if args.dashboard:
+        from src.dashboard import serve
+        serve(settings, args.port)
         return 0
     if (args.once or args.daemon) and (args.plan or args.json):
         raise SystemExit("--plan/--json can't be combined with --once/--daemon")

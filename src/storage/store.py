@@ -127,6 +127,21 @@ class DealStore:
             "SELECT total_eur FROM price_history WHERE deal_id = ? ORDER BY seen_at, rowid", (deal_id,)
         )]
 
+    def upcoming_deals(self, today: date, seen_since: datetime) -> List[Tuple[Deal, datetime, float]]:
+        """(deal, last_seen, lowest_price_eur) for stays from today on, seen since seen_since."""
+        rows = self._conn.execute(
+            "SELECT payload, last_seen, lowest_price_eur FROM deals "
+            "WHERE check_in >= ? AND last_seen >= ? ORDER BY check_in",
+            (today.isoformat(), seen_since.isoformat()),
+        )
+        return [(Deal.model_validate_json(p), datetime.fromisoformat(s), low) for p, s, low in rows]
+
+    def recent_offers(self, limit: int = 50) -> List[Tuple[str, str, str, str]]:
+        """(page_id, title, first_seen, last_seen) of terme packages, newest first."""
+        return [tuple(r) for r in self._conn.execute(
+            "SELECT page_id, title, first_seen, last_seen FROM offers "
+            "ORDER BY first_seen DESC, rowid DESC LIMIT ?", (limit,))]
+
     def get_meta(self, key: str) -> Optional[str]:
         row = self._conn.execute("SELECT value FROM meta WHERE key = ?", (key,)).fetchone()
         return row[0] if row else None
