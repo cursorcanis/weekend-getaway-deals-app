@@ -19,7 +19,7 @@ import time
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Callable, Dict, List, Optional, Tuple
 
 from src.core.config import PROJECT_ROOT, Settings, get_settings
 from src.core.models import Deal, Destination, PartyComposition, StayRequest
@@ -29,8 +29,10 @@ from src.engine.ranking import RankedDeal, rank_deals
 from src.notify import ConsoleNotifier, Notifier, NotifierError, notifiers_from_settings
 from src.sources.base import DealSourceException
 from src.sources.serpapi import SerpApiGoogleHotelsSource
+from src.sources.terme_offers import OfferPage, OfferWatcher, load_offer_pages
 from src.storage.store import DealStore
-from transit.static_catalogue import StaticCatalogue
+from transit.dynamic_checker import TransitCheckError, TransitChecker, format_minutes
+from transit.static_catalogue import StaticCatalogue, load_resort_targets
 
 logger = logging.getLogger("getaway")
 
@@ -62,6 +64,9 @@ def build_parser() -> argparse.ArgumentParser:
                       help="search once, store results, alert new or cheaper deals")
     mode.add_argument("--daemon", action="store_true",
                       help="keep running: --once every POLL_INTERVAL_HOURS (Ctrl+C to stop)")
+    p.add_argument("--offers-unblock", metavar="PAGE_ID",
+                   help="resume polling a terme offer page that answered 403/429 "
+                        "(check the site by hand first)")
     p.add_argument("--dry-run", action="store_true",
                    help="with --once/--daemon: print alerts instead of sending, don't mark them sent")
     p.add_argument("-v", "--verbose", action="store_true")
@@ -69,8 +74,10 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def select_destinations(
-    catalogue: StaticCatalogue, args: argparse.Namespace, max_hours: float
+    catalogue: StaticCatalogue, args: argparse.Namespace, max_hours: float,
+    include_resorts: bool = True,
 ) -> List[Destination]:
+    """Matching destinations, nearest first, each followed by its named terme resorts."""
     entries = catalogue.filter(
         region=args.region,
         is_terme=True if args.terme_only else None,
@@ -83,7 +90,20 @@ def select_destinations(
             raise SystemExit(f"Unknown destination id(s): {', '.join(sorted(unknown))}")
         entries = [d for d in entries if d["id"] in wanted]
     entries.sort(key=lambda d: float(d["typical_travel_time_hours"]))
-    return [catalogue.to_destination(d) for d in entries]
+    resorts = load_resort_targets() if include_resorts else []
+    destinations: List[Destination] = []
+    for d in entries:
+        destinations.append(catalogue.to_destination(d))
+        destinations.extend(catalogue.resort_destinations(d, resorts))
+    return destinations
+
+
+def destinations_by_id(destinations: List[Destination]) -> Dict[str, Destination]:
+    """Resort searches share their town's id; the town entry (listed first) wins."""
+    by_id: Dict[str, Destination] = {}
+    for d in destinations:
+        by_id.setdefault(d.id, d)
+    return by_id
 
 
 def plan_searches(
@@ -190,7 +210,8 @@ def make_plan(args: argparse.Namespace, settings: Settings, today: date) -> RunP
         destinations = [catalogue.to_destination(catalogue.get(DEMO_DESTINATION))]
         stays = [StayRequest(check_in=DEMO_STAY[0], check_out=DEMO_STAY[1], party=party)]
     else:
-        destinations = select_destinations(catalogue, args, max_hours)
+        destinations = select_destinations(catalogue, args, max_hours,
+                                           include_resorts=settings.include_resort_targets)
         stays = upcoming_weekend_stays(
             today, args.weekends or settings.search_weekends, party,
             include_long_weekends=settings.include_long_weekends,
@@ -224,7 +245,9 @@ def print_plan_summary(plan: RunPlan, pairs: list, skipped: int) -> None:
     party_desc = f"{plan.party.adults} adults + children aged {', '.join(map(str, plan.party.children_ages))}"
     print(f"Party: {party_desc} | max ~{plan.max_hours:g}h by train/bus from Santa Margherita Ligure",
           file=sys.stderr)
-    print(f"Destinations: {len(plan.destinations)} | weekends: "
+    resorts = sum(1 for d in plan.destinations if d.search_query)
+    print(f"Destinations: {len(plan.destinations) - resorts}"
+          + (f" (+{resorts} named terme resorts)" if resorts else "") + " | weekends: "
           + ", ".join(f"{s.check_in:%d %b}{' (long)' if s.is_long_weekend else ''}" for s in plan.stays),
           file=sys.stderr)
     print(f"Searches: {len(pairs)}" + (f" ({skipped} skipped by --max-searches {plan.max_searches}; "
@@ -232,12 +255,12 @@ def print_plan_summary(plan: RunPlan, pairs: list, skipped: int) -> None:
           file=sys.stderr)
 
 
-def deliver(alerts: List[Alert], notifiers: List[Notifier]) -> bool:
+def deliver(send: Callable[[Notifier], None], notifiers: List[Notifier]) -> bool:
     """Send to every channel; True if at least one channel delivered."""
     delivered = False
     for n in notifiers:
         try:
-            n.send(alerts)
+            send(n)
             delivered = True
         except NotifierError as exc:
             logger.error("%s: %s", n.name, exc)
@@ -245,6 +268,77 @@ def deliver(alerts: List[Alert], notifiers: List[Notifier]) -> bool:
 
 
 SEARCH_CURSOR_KEY = "search_cursor"
+
+
+def make_transit_checker(settings: Settings, store: DealStore) -> Optional[TransitChecker]:
+    if not settings.google_maps_api_key:
+        return None
+    coords = StaticCatalogue().origin.get("coordinates", {})
+    return TransitChecker(
+        api_key=settings.google_maps_api_key,
+        store=store,
+        origin_lat=coords["latitude"],
+        origin_lon=coords["longitude"],
+        departure_time=settings.friday_departure_time,
+        cache_days=settings.transit_cache_days,
+    )
+
+
+def verify_transit(alerts: List[Alert], checker: TransitChecker, soft_limit_hours: float) -> List[Alert]:
+    """
+    Check the check-in day journey for each alert. Drop alerts whose fastest train/bus
+    journey is over the soft limit; keep the rest with the checked time. If the API
+    fails, keep the alerts unchecked (the static catalogue already passed them).
+    """
+    kept: List[Alert] = []
+    for i, a in enumerate(alerts):
+        dest, day = a.ranked.destination, a.ranked.deal.stay_request.check_in
+        try:
+            minutes = checker.fastest_minutes(dest, day)
+        except TransitCheckError as exc:
+            logger.warning("Live transit check skipped: %s", exc)
+            return kept + alerts[i:]
+        if minutes is None:
+            a.transit_note = f"no {day:%a} train/bus found by Google, check by hand"
+        elif minutes > soft_limit_hours * 60:
+            print(f"  dropped {a.ranked.deal.property_name}: fastest {day:%a %d %b} journey to "
+                  f"{dest.name} is {format_minutes(minutes)}", file=sys.stderr)
+            continue
+        else:
+            a.transit_note = f"fastest {day:%a} train/bus {format_minutes(minutes)} (Google)"
+        kept.append(a)
+    return kept
+
+
+def offer_pages_for(plan: "RunPlan") -> List[OfferPage]:
+    """Offer pages whose destination is in this run (so travel time and filters apply)."""
+    wanted = {d.id for d in plan.destinations}
+    return [p for p in load_offer_pages() if p.destination_id in wanted]
+
+
+def run_offers(
+    args: argparse.Namespace,
+    settings: Settings,
+    store: DealStore,
+    notifiers: List[Notifier],
+    plan: "RunPlan",
+) -> None:
+    pages = offer_pages_for(plan)
+    if not pages:
+        return
+    watcher = OfferWatcher(store, interval_hours=settings.offers_fetch_interval_hours)
+    offers, errors = watcher.check(pages)
+    for e in errors:
+        print(f"  - offers: {e}", file=sys.stderr)
+    if not offers:
+        return
+    print(f"{len(offers)} new terme package(s)", file=sys.stderr)
+    if args.dry_run:
+        ConsoleNotifier().send_offers(offers)
+    elif deliver(lambda n: n.send_offers(offers), notifiers):
+        store.mark_offers_alerted((o.page.id, o.key) for o in offers)
+    else:
+        logger.error("No channel delivered the terme packages; they will be retried next run.")
 
 
 def run_tick(
@@ -269,13 +363,17 @@ def run_tick(
     deals, errors = asyncio.run(run_searches(source, pairs))
     store.set_meta(SEARCH_CURSOR_KEY, str(cursor + len(pairs)))
     store.record_observations(deals)
-    ranked = rank_deals(deals, {d.id: d for d in plan.destinations}, plan.max_hours, plan.budget)
+    ranked = rank_deals(deals, destinations_by_id(plan.destinations), plan.max_hours, plan.budget)
     alerts = select_alerts(
         ranked, store.last_alerted_price, today,
         min_score=settings.alert_min_score,
         min_price_drop_eur=settings.alert_min_price_drop_eur,
         max_alerts=settings.alert_max_per_message,
     )
+
+    checker = None if args.demo else make_transit_checker(settings, store)
+    if checker and alerts:
+        alerts = verify_transit(alerts, checker, max(settings.max_travel_hours_soft, plan.max_hours))
 
     print(f"{len(deals)} offers seen, {len(ranked)} within budget, {len(alerts)} to alert"
           + (f", {len(errors)} search(es) failed" if errors else ""), file=sys.stderr)
@@ -285,11 +383,15 @@ def run_tick(
     if alerts:
         if args.dry_run:
             ConsoleNotifier().send(alerts)
-        elif deliver(alerts, notifiers):
+        elif deliver(lambda n: n.send(alerts), notifiers):
             for a in alerts:
                 store.record_alert(a.ranked.deal.id, a.kind.value, a.ranked.deal.price.total_eur)
         else:
             logger.error("No channel delivered the alerts; they will be retried next run.")
+
+    # Demo runs stay offline, so they don't fetch offer pages.
+    if settings.terme_offers_enabled and not args.demo:
+        run_offers(args, settings, store, notifiers, plan)
     return 0 if deals or not errors else 1
 
 
@@ -336,6 +438,11 @@ def main(argv: Optional[List[str]] = None) -> int:
         logging.getLogger(noisy).setLevel(logging.WARNING)
     settings: Settings = get_settings()
 
+    if args.offers_unblock:
+        with DealStore(settings.db_path) as store:
+            store.delete_meta(f"offers:{args.offers_unblock}:blocked")
+        print(f"Offer page {args.offers_unblock} will be polled again.", file=sys.stderr)
+        return 0
     if (args.once or args.daemon) and (args.plan or args.json):
         raise SystemExit("--plan/--json can't be combined with --once/--daemon")
     if args.dry_run and not (args.once or args.daemon):
@@ -353,6 +460,12 @@ def main(argv: Optional[List[str]] = None) -> int:
         for dest, stay in pairs:
             print(f"  {stay.check_in} -> {stay.check_out}  {dest.name} ({dest.region}, "
                   f"~{dest.transit_route.total_hours:.1f}h)")
+        pages = offer_pages_for(plan) if settings.terme_offers_enabled and not args.demo else []
+        if pages:
+            print("Terme offer pages watched by --once/--daemon (each at most every "
+                  f"{settings.offers_fetch_interval_hours:g}h):", file=sys.stderr)
+            for page in pages:
+                print(f"  {page.name}: {page.url}", file=sys.stderr)
         return 0
 
     if not pairs:
@@ -364,7 +477,7 @@ def main(argv: Optional[List[str]] = None) -> int:
         return 2
 
     deals, errors = asyncio.run(run_searches(source, pairs))
-    ranked = rank_deals(deals, {d.id: d for d in plan.destinations}, plan.max_hours, plan.budget)
+    ranked = rank_deals(deals, destinations_by_id(plan.destinations), plan.max_hours, plan.budget)
 
     print("", file=sys.stderr)
     print(to_json(ranked, args.top) if args.json else format_table(ranked, args.top))

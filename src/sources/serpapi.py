@@ -238,7 +238,7 @@ class SerpApiGoogleHotelsSource(BaseDealSource):
     def _build_params(self, destination: Destination, stay: StayRequest) -> Dict[str, Any]:
         params: Dict[str, Any] = {
             "engine": "google_hotels",
-            "q": f"{destination.name} hotels",
+            "q": destination.search_query or f"{destination.name} hotels",
             "check_in_date": stay.check_in.isoformat(),
             "check_out_date": stay.check_out.isoformat(),
             "adults": stay.party.adults,
@@ -342,8 +342,13 @@ class SerpApiGoogleHotelsSource(BaseDealSource):
             data = await self._fetch(params)
             self._write_cache(cache_path, data)
 
+        properties = data.get("properties")
+        if properties is None and data.get("name"):
+            # A query naming one hotel returns that property's details at the top level.
+            properties = [data]
+
         deals: List[Deal] = []
-        for prop in data.get("properties", []) or []:
+        for prop in properties or []:
             deal = self._normalize_deal(prop, destination, stay)
             if deal:
                 deals.append(deal)

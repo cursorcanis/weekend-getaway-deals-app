@@ -14,6 +14,8 @@ class Alert:
     ranked: RankedDeal
     kind: AlertType
     previous_price_eur: Optional[float] = None
+    # Result of the live train/bus check, e.g. "fastest Fri train/bus 4h50 (Google)"
+    transit_note: Optional[str] = None
 
 
 def select_alerts(

@@ -11,7 +11,15 @@ import httpx
 
 from src.core.config import Settings
 from src.engine.alerts import Alert
-from src.notify.format import format_telegram, format_text, subject_line
+from src.notify.format import (
+    format_offers_telegram,
+    format_offers_text,
+    format_telegram,
+    format_text,
+    offers_subject,
+    subject_line,
+)
+from src.sources.terme_offers import Offer
 
 
 class NotifierError(Exception):
@@ -23,16 +31,34 @@ class Notifier(Protocol):
 
     def send(self, alerts: List[Alert]) -> None: ...
 
+    def send_offers(self, offers: List[Offer]) -> None: ...
 
-class ConsoleNotifier:
-    name = "console"
+
+class _Channel:
+    """send / send_offers build the message; each channel implements _deliver."""
+
+    name = "channel"
 
     def send(self, alerts: List[Alert]) -> None:
-        print(f"\n=== {subject_line(alerts)} ===\n{format_text(alerts)}\n")
+        self._deliver(subject_line(alerts), format_text(alerts), format_telegram(alerts))
+
+    def send_offers(self, offers: List[Offer]) -> None:
+        self._deliver(offers_subject(offers), format_offers_text(offers),
+                      format_offers_telegram(offers))
+
+    def _deliver(self, subject: str, text: str, html_messages: List[str]) -> None:
+        raise NotImplementedError
+
+
+class ConsoleNotifier(_Channel):
+    name = "console"
+
+    def _deliver(self, subject: str, text: str, html_messages: List[str]) -> None:
+        print(f"\n=== {subject} ===\n{text}\n")
         sys.stdout.flush()
 
 
-class TelegramNotifier:
+class TelegramNotifier(_Channel):
     name = "telegram"
 
     def __init__(self, bot_token: str, chat_id: str, client: Optional[httpx.Client] = None):
@@ -40,12 +66,12 @@ class TelegramNotifier:
         self._chat_id = chat_id
         self._client = client or httpx.Client(timeout=httpx.Timeout(30.0, connect=10.0))
 
-    def send(self, alerts: List[Alert]) -> None:
-        for text in format_telegram(alerts):
+    def _deliver(self, subject: str, text: str, html_messages: List[str]) -> None:
+        for html in html_messages:
             try:
                 resp = self._client.post(self._url, json={
                     "chat_id": self._chat_id,
-                    "text": text,
+                    "text": html,
                     "parse_mode": "HTML",
                     "disable_web_page_preview": True,
                 })
@@ -60,7 +86,7 @@ class TelegramNotifier:
                 raise NotifierError(f"Telegram returned HTTP {resp.status_code} {detail}".strip())
 
 
-class EmailNotifier:
+class EmailNotifier(_Channel):
     name = "email"
 
     def __init__(self, host: str, port: int, user: Optional[str], password: Optional[str],
@@ -70,15 +96,18 @@ class EmailNotifier:
         self.sender, self.recipients = sender, recipients
 
     def build_message(self, alerts: List[Alert]) -> EmailMessage:
+        return self._message(subject_line(alerts), format_text(alerts))
+
+    def _message(self, subject: str, text: str) -> EmailMessage:
         msg = EmailMessage()
-        msg["Subject"] = subject_line(alerts)
+        msg["Subject"] = subject
         msg["From"] = self.sender
         msg["To"] = ", ".join(self.recipients)
-        msg.set_content(format_text(alerts))
+        msg.set_content(text)
         return msg
 
-    def send(self, alerts: List[Alert]) -> None:
-        msg = self.build_message(alerts)
+    def _deliver(self, subject: str, text: str, html_messages: List[str]) -> None:
+        msg = self._message(subject, text)
         # smtplib's default context skips certificate checks; verify so the password can't leak.
         context = ssl.create_default_context()
         try:

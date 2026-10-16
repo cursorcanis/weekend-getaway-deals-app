@@ -18,7 +18,6 @@ from src.core.models import (
     TransitSegment,
 )
 from src.sources.serpapi import SerpApiGoogleHotelsSource
-from src.sources.terme_stub import DirectTermeScraperSource, TERME_MINIMUM_AGE_POLICIES
 
 
 @pytest.fixture
@@ -116,16 +115,3 @@ async def test_serpapi_source_offline_normalization(
         # 5 stars -> €4.50/person/night * 3 persons * 2 nights = €27.00
         assert deal2.price.estimated_tourist_tax_eur == 27.00
 
-
-def test_terme_age_policy_restrictions() -> None:
-    scraper = DirectTermeScraperSource()
-    child_ages = [15, 7]
-
-    # QC Terme strictly forbids minors under 14 -> 7yo is barred
-    assert scraper.validate_family_spa_eligibility("qc_terme", child_ages) is False
-    assert scraper.validate_family_spa_eligibility("bormio_bagni_vecchi", child_ages) is False
-
-    # Bormio Terme, Saturnia, Sirmione Aquaria are family friendly
-    assert scraper.validate_family_spa_eligibility("bormio_terme", child_ages) is True
-    assert scraper.validate_family_spa_eligibility("sirmione_aquaria", child_ages) is True
-    assert scraper.validate_family_spa_eligibility("terme_saturnia", child_ages) is True

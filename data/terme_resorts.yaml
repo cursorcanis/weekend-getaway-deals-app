@@ -1,0 +1,32 @@
+# Named terme resort hotels searched on their own via SerpApi / Google Hotels,
+# in addition to the generic "<town> hotels" search of their destination.
+# A town search often misses the resort itself, and the resort is where the
+# thermal pools are. Each entry costs one SerpApi search per weekend.
+#
+# destination_id must exist in destinations.yaml (reachability and spa age
+# rules come from there). query is the hotel's name as Google Hotels lists it.
+# Source: docs/compliance_phase5.md, recommendation (a)1.
+#
+# Bormio partner hotels are not listed: Bormio Terme names no partner hotels
+# on its site, and the town search already covers Bormio.
+
+resorts:
+  - destination_id: "saturnia"
+    name: "Terme di Saturnia Natural Destination"
+    query: "Terme di Saturnia Natural Destination"
+
+  - destination_id: "monsummano-terme"
+    name: "Grotta Giusti Thermal Spa Resort"
+    query: "Grotta Giusti Thermal Spa Resort Monsummano Terme"
+
+  - destination_id: "sirmione"
+    name: "Grand Hotel Terme Sirmione"
+    query: "Grand Hotel Terme Sirmione"
+
+  - destination_id: "viterbo-terme"
+    name: "Hotel Niccolò V (Terme dei Papi)"
+    query: "Hotel Niccolò V Terme dei Papi Viterbo"
+
+  - destination_id: "venturina-terme"
+    name: "Calidario Terme Etrusche"
+    query: "Calidario Terme Etrusche Venturina"

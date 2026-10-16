@@ -20,6 +20,16 @@ from src.core.models import (
 
 
 DEFAULT_CATALOGUE_PATH = Path(__file__).resolve().parent.parent / "data" / "destinations.yaml"
+DEFAULT_RESORTS_PATH = DEFAULT_CATALOGUE_PATH.with_name("terme_resorts.yaml")
+
+
+def load_resort_targets(path: Optional[Path | str] = None) -> List[Dict[str, Any]]:
+    """Named terme resorts to search on their own (data/terme_resorts.yaml)."""
+    p = Path(path or DEFAULT_RESORTS_PATH)
+    if not p.exists():
+        return []
+    with open(p, "r", encoding="utf-8") as f:
+        return (yaml.safe_load(f) or {}).get("resorts", []) or []
 
 
 class StaticCatalogue:
@@ -134,6 +144,22 @@ class StaticCatalogue:
             minimum_child_age_spa=dest.get("minimum_child_age_spa"),
             notes=dest.get("notes"),
         )
+
+    def resort_destinations(self, dest: Dict[str, Any],
+                            resorts: Optional[List[Dict[str, Any]]] = None) -> List[Destination]:
+        """
+        One Destination per named resort in this destination. They keep the parent's
+        id, so reachability, spa age rules and ranking are the parent's.
+        """
+        base = self.to_destination(dest)
+        return [
+            base.model_copy(update={
+                "name": f"{base.name}: {r['name']}",
+                "search_query": r["query"],
+            })
+            for r in (load_resort_targets() if resorts is None else resorts)
+            if r.get("destination_id") == dest["id"]
+        ]
 
     def get_summary(self) -> Dict[str, Any]:
         """Generate high-level counts and breakdown by region and category."""

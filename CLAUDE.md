@@ -44,6 +44,8 @@ Live searches cost SerpApi quota: each (destination, weekend) pair is one search
 
 Alerts go to Telegram and/or email when configured in `.env` (see `.env.example`), else to the console. A deal is alerted when it scores ≥ `ALERT_MIN_SCORE` and was never alerted, or is ≥ `ALERT_MIN_PRICE_DROP_EUR` cheaper than its last alert. Alerts are only marked sent when at least one channel delivered; `--dry-run` never marks them.
 
+Terme coverage (Phase 5): resorts in `data/terme_resorts.yaml` are searched by name besides their town (`INCLUDE_RESORT_TARGETS`), and the static offer pages in `data/terme_offer_pages.yaml` are watched for new package titles (`TERME_OFFERS_ENABLED`, titles + link only, per `docs/compliance_phase5.md`). A page that answers 403/429 stops being polled until `python -m src.cli --offers-unblock <page_id>`. With `GOOGLE_MAPS_API_KEY` set, each alert's check-in-day train/bus journey is checked live via the Google Routes API and dropped if over `MAX_TRAVEL_HOURS_SOFT`; Trenitalia/Italo are never called automatically.
+
 On Windows, prefer Task Scheduler running `python -m src.cli --once` every 12h (working directory = project root) over a long-lived `--daemon`, so runs survive sleep and reboots.
 
 ## Conventions

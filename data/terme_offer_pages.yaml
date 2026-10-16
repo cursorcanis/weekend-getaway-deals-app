@@ -1,0 +1,36 @@
+# Terme offer listing pages watched for new package titles.
+# Approved in docs/compliance_phase5.md (a), on these conditions, enforced in
+# src/sources/terme_offers.py:
+#   - fetch only these static listing pages, never a booking engine
+#   - at most one request every 2 s, each page at most every 12 h, conditional GET
+#   - identifiable User-Agent, no redirects followed, stop on 403/429
+#   - store only the offer title and the page link, not page text or images
+#
+# Offers are the headings of type `heading_tag` after the first heading matching
+# `start_after`, up to the first heading matching `stop_at` (regexes, case-sensitive).
+# Titles matching `exclude` are dropped. No family price is extracted: these pages
+# show "from" prices per person, or none.
+#
+# Not watched:
+#   - Grotta Giusti /offerte-pacchetti/: offers are loaded by JavaScript, not in the
+#     static page; reading the script's data source is beyond the approval.
+#   - Terme di Sirmione, Terme dei Papi: on hold until robots.txt/terms are checked by hand.
+#   - QC Terme: under-14s barred, the 7-year-old can't go.
+
+pages:
+  - id: "saturnia-resort"
+    name: "Terme di Saturnia resort"
+    destination_id: "saturnia"
+    url: "https://www.termedisaturnia.it/resort/offerte/"
+    heading_tag: "h2"
+    start_after: "^OFFERTE$"
+    stop_at: "^Offerte$"
+    exclude: "(?i)golf"
+
+  - id: "terme-merano"
+    name: "Terme Merano holiday packages"
+    destination_id: "merano"
+    # robots.txt disallows offer/date/room query URLs; the plain listing is allowed.
+    url: "https://www.termemerano.it/de/services/urlaubspakete/"
+    heading_tag: "h3"
+    start_after: "^Unsere Urlaubspakete$"

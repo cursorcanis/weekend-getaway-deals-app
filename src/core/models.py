@@ -95,6 +95,10 @@ class Destination(BaseModel):
         description="Minimum age admitted into thermal pools/wellness centers if restricted"
     )
     notes: Optional[str] = None
+    search_query: Optional[str] = Field(
+        default=None,
+        description="Hotel search text overriding '<name> hotels', e.g. a named terme resort"
+    )
 
 
 class StayRequest(BaseModel):

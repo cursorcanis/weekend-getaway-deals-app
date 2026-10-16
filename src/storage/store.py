@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 import sqlite3
-from datetime import datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
-from typing import Iterable, Optional, Union
+from typing import Iterable, List, Optional, Sequence, Tuple, Union
 
 from src.core.models import Deal
 
@@ -35,6 +35,22 @@ CREATE TABLE IF NOT EXISTS alerts_sent (
     total_eur  REAL NOT NULL
 );
 CREATE INDEX IF NOT EXISTS ix_alerts_sent_deal ON alerts_sent (deal_id, sent_at);
+CREATE TABLE IF NOT EXISTS offers (
+    page_id    TEXT NOT NULL,
+    title_key  TEXT NOT NULL,
+    title      TEXT NOT NULL,
+    first_seen TEXT NOT NULL,
+    last_seen  TEXT NOT NULL,
+    alerted_at TEXT,
+    PRIMARY KEY (page_id, title_key)
+);
+CREATE TABLE IF NOT EXISTS transit_checks (
+    destination_id TEXT NOT NULL,
+    travel_date    TEXT NOT NULL,
+    checked_at     TEXT NOT NULL,
+    minutes        INTEGER,
+    PRIMARY KEY (destination_id, travel_date)
+);
 CREATE TABLE IF NOT EXISTS meta (
     key   TEXT PRIMARY KEY,
     value TEXT NOT NULL
@@ -121,4 +137,73 @@ class DealStore:
                 "INSERT INTO meta (key, value) VALUES (?, ?) "
                 "ON CONFLICT (key) DO UPDATE SET value = excluded.value",
                 (key, value),
+            )
+
+    def delete_meta(self, key: str) -> None:
+        with self._conn:
+            self._conn.execute("DELETE FROM meta WHERE key = ?", (key,))
+
+    # --- terme offer pages ---------------------------------------------------
+
+    def record_offers(self, page_id: str, offers: Sequence[Tuple[str, str]],
+                      now: Optional[datetime] = None) -> None:
+        """offers: (title_key, title) pairs currently listed on the page."""
+        ts = (now or _now()).isoformat()
+        with self._conn:
+            for key, title in offers:
+                self._conn.execute(
+                    """
+                    INSERT INTO offers (page_id, title_key, title, first_seen, last_seen)
+                    VALUES (?, ?, ?, ?, ?)
+                    ON CONFLICT (page_id, title_key) DO UPDATE SET
+                        last_seen = excluded.last_seen, title = excluded.title
+                    """,
+                    (page_id, key, title, ts, ts),
+                )
+
+    def unalerted_offers(self, page_ids: Sequence[str]) -> List[Tuple[str, str]]:
+        """(page_id, title) of offers on these pages never alerted, oldest first."""
+        if not page_ids:
+            return []
+        marks = ",".join("?" * len(page_ids))
+        return [tuple(r) for r in self._conn.execute(
+            f"SELECT page_id, title FROM offers WHERE alerted_at IS NULL AND page_id IN ({marks}) "
+            "ORDER BY first_seen, rowid", list(page_ids))]
+
+    def mark_offers_alerted(self, offers: Iterable[Tuple[str, str]],
+                            now: Optional[datetime] = None) -> None:
+        """offers: (page_id, title_key) pairs."""
+        ts = (now or _now()).isoformat()
+        with self._conn:
+            self._conn.executemany(
+                "UPDATE offers SET alerted_at = ? WHERE page_id = ? AND title_key = ?",
+                [(ts, pid, key) for pid, key in offers],
+            )
+
+    # --- live transit checks -------------------------------------------------
+
+    def cached_transit_minutes(self, destination_id: str, travel_date: date, max_age_days: int,
+                               now: Optional[datetime] = None) -> Tuple[bool, Optional[int]]:
+        """(found, minutes). minutes None means the check found no train/bus route."""
+        row = self._conn.execute(
+            "SELECT checked_at, minutes FROM transit_checks WHERE destination_id = ? AND travel_date = ?",
+            (destination_id, travel_date.isoformat()),
+        ).fetchone()
+        if not row:
+            return False, None
+        if (now or _now()) - datetime.fromisoformat(row[0]) > timedelta(days=max_age_days):
+            return False, None
+        return True, row[1]
+
+    def save_transit_minutes(self, destination_id: str, travel_date: date, minutes: Optional[int],
+                             now: Optional[datetime] = None) -> None:
+        with self._conn:
+            self._conn.execute(
+                """
+                INSERT INTO transit_checks (destination_id, travel_date, checked_at, minutes)
+                VALUES (?, ?, ?, ?)
+                ON CONFLICT (destination_id, travel_date) DO UPDATE SET
+                    checked_at = excluded.checked_at, minutes = excluded.minutes
+                """,
+                (destination_id, travel_date.isoformat(), (now or _now()).isoformat(), minutes),
             )

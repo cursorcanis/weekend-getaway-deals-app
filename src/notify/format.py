@@ -6,6 +6,7 @@ from typing import List
 
 from src.core.models import AlertType
 from src.engine.alerts import Alert
+from src.sources.terme_offers import Offer
 
 # Telegram rejects messages over 4096 characters.
 TELEGRAM_MAX_CHARS = 4000
@@ -38,11 +39,17 @@ def _facts(alert: Alert) -> dict:
         extras.append(f"{p.discount_percent:.0f}% below usual")
     if d.user_review_score:
         extras.append(f"rated {d.user_review_score:.1f}/10")
+    route = r.destination.transit_route
+    travel = f"~{route.total_hours:.1f}h by train/bus"
+    if alert.transit_note:
+        travel += f"; {alert.transit_note}"
     return {
         "head": head,
         "name": d.property_name + (f" {d.star_rating:.0f}*" if d.star_rating else ""),
-        "where": f"{r.destination.name}, {r.destination.region} | "
-                 f"~{r.destination.transit_route.total_hours:.1f}h by train/bus",
+        "where": f"{r.destination.name}, {r.destination.region} | {travel}",
+        # Trenitalia can't be queried automatically (its terms forbid it): check by hand.
+        "trains": f"Trains: lefrecce.it, {route.origin} -> {route.destination_station}, "
+                  f"{stay.check_in:%a %d %b}",
         "when": f"{stay.check_in:%a %d %b} -> {stay.check_out:%a %d %b} ({stay.nights} nights)",
         "price": price,
         "extras": ", ".join(extras),
@@ -62,6 +69,7 @@ def format_text(alerts: List[Alert]) -> str:
             f"  {f['when']}",
             f"  {f['price']}",
             f"  {f['extras']}",
+            f"  {f['trains']}",
         ]
         if f["flags"]:
             lines.append(f"  ! {f['flags']}")
@@ -82,6 +90,7 @@ def _telegram_block(alert: Alert) -> str:
         f["when"],
         f"<b>{f['price']}</b>",
         f["extras"],
+        f["trains"],
     ]
     if f["flags"]:
         lines.append(f"⚠ {f['flags']}")
@@ -90,10 +99,14 @@ def _telegram_block(alert: Alert) -> str:
 
 def format_telegram(alerts: List[Alert]) -> List[str]:
     """HTML messages, each under Telegram's size limit."""
+    return _split_telegram(f"<b>{escape(subject_line(alerts))}</b>",
+                           [_telegram_block(a) for a in alerts])
+
+
+def _split_telegram(header: str, blocks: List[str]) -> List[str]:
     messages: List[str] = []
-    current = f"<b>{escape(subject_line(alerts))}</b>"
-    for alert in alerts:
-        block = _telegram_block(alert)
+    current = header
+    for block in blocks:
         if len(current) + 2 + len(block) > TELEGRAM_MAX_CHARS:
             messages.append(current)
             current = block
@@ -101,3 +114,40 @@ def format_telegram(alerts: List[Alert]) -> List[str]:
             current += "\n\n" + block
     messages.append(current)
     return messages
+
+
+# --- terme offer pages -------------------------------------------------------
+
+OFFERS_FOOTER = ("Package titles only: these pages show per-person prices for 2 adults, or none. "
+                 "Check the family terms (the 15-year-old may pay as an adult) on the site.")
+
+
+def offers_subject(offers: List[Offer]) -> str:
+    return f"Terme packages: {len(offers)} new"
+
+
+def _offers_by_page(offers: List[Offer]):
+    pages = {}
+    for o in offers:
+        pages.setdefault(o.page, []).append(o.title)
+    return pages.items()
+
+
+def format_offers_text(offers: List[Offer]) -> str:
+    blocks = []
+    for page, titles in _offers_by_page(offers):
+        lines = [f"[NEW PACKAGE] {page.name}"] + [f"  - {t}" for t in titles] + [f"  {page.url}"]
+        blocks.append("\n".join(lines))
+    return "\n\n".join(blocks + [OFFERS_FOOTER])
+
+
+def format_offers_telegram(offers: List[Offer]) -> List[str]:
+    blocks = [
+        "\n".join([f"<a href=\"{escape(page.url)}\">{escape(page.name)}</a>"]
+                  + [f"• {escape(t)}" for t in titles])
+        for page, titles in _offers_by_page(offers)
+    ]
+    return _split_telegram(f"<b>{escape(offers_subject(offers))}</b>",
+                           blocks + [escape(OFFERS_FOOTER)])
+
+
